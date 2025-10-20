@@ -19,14 +19,14 @@ const Projects = () => {
       title: 'Centro Benessere Premium',
       category: 'Web Development',
       description: 'Sito web elegante con sistema di prenotazione integrato e gestione servizi wellness',
-      tags: ['Web', 'Design', 'E-commerce'],
+      tags: ['Web', 'Design', 'Booking'],
       gradient: 'from-[#8a2be2] to-[#b14ee8]',
     },
     {
-      title: 'E-commerce AI-Powered',
+      title: 'Piattaforma AI Intelligente',
       category: 'AI & Web',
-      description: 'Piattaforma e-commerce con raccomandazioni AI e assistente virtuale per supporto clienti',
-      tags: ['AI', 'E-commerce', 'Web'],
+      description: 'Sistema avanzato con raccomandazioni AI e assistente virtuale per supporto clienti in tempo reale',
+      tags: ['AI', 'Machine Learning', 'Web'],
       gradient: 'from-[#00b7ff] to-[#8a2be2]',
     },
     {
