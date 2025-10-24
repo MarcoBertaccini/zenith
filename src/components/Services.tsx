@@ -29,8 +29,8 @@ const Services = () => {
     <section id="servizi" className="relative py-40 px-6 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0f0f1a] via-[#0a0a0a] to-[#0a0a0a]" />
 
-      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#8a2be2]/6 rounded-full blur-[140px] animate-pulse-glow" />
-      <div className="absolute bottom-1/3 left-1/4 w-[600px] h-[600px] bg-[#00b7ff]/6 rounded-full blur-[140px] animate-pulse-glow animation-delay-400" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-[#8a2be2]/5 rounded-full blur-[100px] animate-pulse-glow hidden md:block" />
+      <div className="absolute bottom-1/3 left-1/4 w-[400px] h-[400px] bg-[#00b7ff]/5 rounded-full blur-[100px] animate-pulse-glow animation-delay-600 hidden md:block" />
 
       <div
         className="absolute inset-0 opacity-20"
@@ -44,7 +44,7 @@ const Services = () => {
       />
 
       <div ref={ref} className="relative max-w-7xl mx-auto">
-        <div className={`text-center mb-20 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`text-center mb-20 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ willChange: 'transform, opacity' }}>
           <div className="inline-block mb-6">
             <div className="h-1 w-20 bg-gradient-to-r from-[#00b7ff] to-[#8a2be2] rounded-full mx-auto mb-6" />
           </div>
@@ -62,12 +62,12 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative p-10 rounded-3xl border-2 border-[#00b7ff]/20 bg-gradient-to-br from-black/50 to-[#8a2be2]/5 backdrop-blur-xl hover:border-[#00b7ff]/50 transition-all duration-700 card-3d overflow-hidden hover:inset-glow ${
+              className={`group relative p-10 rounded-3xl border-2 border-[#00b7ff]/20 bg-gradient-to-br from-black/50 to-[#8a2be2]/5 backdrop-blur-xl hover:border-[#00b7ff]/50 transition-all duration-500 card-3d overflow-hidden hover:inset-glow ${
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${index * 80}ms` }}
+              style={{ transitionDelay: `${index * 80}ms`, willChange: 'transform, opacity' }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00b7ff]/0 via-[#00b7ff]/5 to-[#8a2be2]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#00b7ff]/0 via-[#00b7ff]/5 to-[#8a2be2]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="absolute top-0 left-0 w-full h-1 overflow-hidden rounded-t-3xl">
                 <div className="h-full bg-gradient-to-r from-[#00b7ff] via-[#8a2be2] to-[#00b7ff] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />

@@ -30,16 +30,16 @@ const Hero = () => {
     }
 
     const particles: Particle[] = [];
-    const particleCount = window.innerWidth < 768 ? 30 : 60;
-    const connectionDistance = 200;
+    const particleCount = window.innerWidth < 768 ? 18 : 40;
+    const connectionDistance = 150;
 
     for (let i = 0; i < particleCount; i++) {
       const hue = Math.random() > 0.5 ? 200 : 270;
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
         size: Math.random() * 2 + 1,
         color: hue === 200 ? '#00B7FF' : '#8A2BE2',
         hue: hue,
@@ -78,21 +78,21 @@ const Hero = () => {
         const dy = mouseY - particle.y;
         const distToMouse = Math.sqrt(dx * dx + dy * dy);
 
-        if (distToMouse < 150) {
-          const force = (150 - distToMouse) / 150;
-          particle.x += dx * force * 0.003;
-          particle.y += dy * force * 0.003;
+        if (distToMouse < 120) {
+          const force = (120 - distToMouse) / 120;
+          particle.x += dx * force * 0.002;
+          particle.y += dy * force * 0.002;
         }
 
-        particle.pulse += 0.02;
-        const pulseEffect = Math.sin(particle.pulse) * 0.3;
+        particle.pulse += 0.015;
+        const pulseEffect = Math.sin(particle.pulse) * 0.2;
         const currentSize = particle.size + pulseEffect;
 
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = `hsla(${particle.hue}, 100%, 60%, 0.6)`;
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = `hsla(${particle.hue}, 100%, 60%, 0.4)`;
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, currentSize, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${particle.hue}, 100%, 65%, 1)`;
+        ctx.fillStyle = `hsla(${particle.hue}, 100%, 65%, 0.9)`;
         ctx.fill();
         ctx.shadowBlur = 0;
 
@@ -105,13 +105,13 @@ const Hero = () => {
 
           if (distance < connectionDistance) {
             ctx.beginPath();
-            const opacity = (1 - distance / connectionDistance) * 0.35;
+            const opacity = (1 - distance / connectionDistance) * 0.25;
             const avgHue = (particle.hue + otherParticle.hue) / 2;
 
-            ctx.shadowBlur = 4;
-            ctx.shadowColor = `hsla(${avgHue}, 100%, 60%, 0.4)`;
+            ctx.shadowBlur = 2;
+            ctx.shadowColor = `hsla(${avgHue}, 100%, 60%, 0.3)`;
             ctx.strokeStyle = `hsla(${avgHue}, 100%, 65%, ${opacity})`;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0.8;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
             ctx.stroke();
@@ -150,14 +150,15 @@ const Hero = () => {
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 py-12 flex flex-col items-center justify-center min-h-screen text-center">
         <div className="relative mb-12 animate-fadeInUp">
-          <h1 className="text-[3.5rem] md:text-[6rem] lg:text-[8.5rem] font-black tracking-[0.05em] leading-[0.9]">
+          <h1 className="text-[3.5rem] md:text-[6rem] lg:text-[8.5rem] font-black tracking-[0.05em] leading-[0.9] animate-zenith-entrance">
             <span
               className="relative inline-block text-white"
               style={{
                 fontFamily: "'Orbitron', 'Rajdhani', system-ui, sans-serif",
-                textShadow: '0 0 15px rgba(0, 183, 255, 0.35), 0 0 30px rgba(0, 183, 255, 0.2), 0 0 45px rgba(138, 43, 226, 0.15)',
-                WebkitTextStroke: '0.5px rgba(0, 183, 255, 0.25)',
-                letterSpacing: '0.05em'
+                textShadow: '0 0 20px rgba(0, 183, 255, 0.3)',
+                WebkitTextStroke: '0.5px rgba(0, 183, 255, 0.2)',
+                letterSpacing: '0.05em',
+                willChange: 'transform, opacity'
               }}
             >
               ZENITH
@@ -175,17 +176,11 @@ const Hero = () => {
         <button
           onClick={scrollToProjects}
           className="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-[#00b7ff] rounded-full font-semibold text-base text-white transition-all duration-300 transform hover:scale-105 animate-fadeInUp animation-delay-400 overflow-hidden"
-          style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
+          style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", willChange: 'transform' }}
         >
           <span className="relative z-10">Esplora il futuro</span>
           <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
           <div className="absolute inset-0 bg-[#00b7ff] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-          <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-            style={{
-              boxShadow: '0 0 30px rgba(0, 183, 255, 0.6), 0 0 60px rgba(0, 183, 255, 0.3)'
-            }}
-          />
         </button>
 
       </div>
