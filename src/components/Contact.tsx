@@ -109,7 +109,7 @@ const Contact = () => {
         <div className={`mt-16 p-8 rounded-2xl border border-[#00b7ff]/20 bg-gradient-to-br from-black/40 to-[#8a2be2]/5 backdrop-blur-xl text-center transition-all duration-1000 delay-400 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-gray-400 mb-3 text-sm uppercase tracking-wider">Oppure contattaci direttamente</p>
           <a
-            href="mailto:info@zenith.ai"
+            href="mailto:info@zenith-studio.it"
             className="text-2xl text-gradient-electric font-bold hover:text-glow transition-all duration-500 inline-block hover:scale-105"
           >
             info@zenith.ai
