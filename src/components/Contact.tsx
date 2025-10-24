@@ -112,7 +112,7 @@ const Contact = () => {
             href="mailto:info@zenith-studio.it"
             className="text-2xl text-gradient-electric font-bold hover:text-glow transition-all duration-500 inline-block hover:scale-105"
           >
-            info@zenith.ai
+            info@zenith-studio.it
           </a>
         </div>
       </div>
