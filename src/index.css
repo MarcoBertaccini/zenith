@@ -146,6 +146,116 @@
     animation: scroll-bounce 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 
+  .preloader-text {
+    text-shadow: inset 0 0 20px rgba(0, 183, 255, 0.6);
+    animation: preloader-glow 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes preloader-glow {
+    0% {
+      opacity: 0;
+      text-shadow: inset 0 0 0px rgba(0, 183, 255, 0);
+    }
+    40% {
+      opacity: 1;
+      text-shadow: inset 0 0 15px rgba(0, 183, 255, 0.5);
+    }
+    100% {
+      opacity: 1;
+      text-shadow: inset 0 0 20px rgba(0, 183, 255, 0.6);
+    }
+  }
+
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  .scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00b7ff, transparent);
+    animation: scanline 550ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes neural-pulse {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+  }
+
+  .neural-pulse-wrapper {
+    position: absolute;
+    inset: -20px;
+    pointer-events: none;
+    animation: neural-pulse 200ms cubic-bezier(0.4, 0, 0.2, 1) 600ms forwards;
+    will-change: transform, opacity;
+  }
+
+  .neural-pulse {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #00b7ff;
+    border-radius: 8px;
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .preloader-text {
+      animation: none;
+      opacity: 1;
+      text-shadow: inset 0 0 20px rgba(0, 183, 255, 0.6);
+    }
+
+    .scanline {
+      display: none;
+    }
+
+    .neural-pulse-wrapper {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .preloader-text {
+      animation-duration: 0.6s;
+    }
+
+    .scanline {
+      animation-duration: 450ms;
+    }
+
+    .neural-pulse-wrapper {
+      animation-duration: 150ms;
+      animation-delay: 500ms;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
