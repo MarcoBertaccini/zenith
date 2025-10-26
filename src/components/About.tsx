@@ -12,7 +12,7 @@ const About = () => {
   ];
 
   return (
-    <section id="chi-sono" className="relative py-40 px-6 overflow-hidden">
+    <section id="chi-siamo" className="relative py-40 px-6 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f1a] to-[#0a0a0a]" />
 
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#00b7ff]/8 rounded-full blur-[150px] animate-pulse-glow" />

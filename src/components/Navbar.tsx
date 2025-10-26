@@ -41,7 +41,7 @@ const Navbar = () => {
           </button>
 
           <div className="hidden md:flex items-center space-x-10">
-            {['Chi sono', 'Progetti', 'Servizi', 'Contatti'].map((item) => (
+            {['Chi siamo', 'Progetti', 'Servizi', 'Contatti'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
@@ -70,7 +70,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-2xl border-t border-[#00b7ff]/20 shadow-[0_10px_40px_rgba(0,183,255,0.2)] animate-fadeIn">
           <div className="px-6 py-6 space-y-5">
-            {['Chi sono', 'Progetti', 'Servizi', 'Contatti'].map((item, index) => (
+            {['Chi siamo', 'Progetti', 'Servizi', 'Contatti'].map((item, index) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
