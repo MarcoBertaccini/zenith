@@ -1,7 +1,9 @@
 import { useInView } from '../hooks/useInView';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Contact = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
+  const { t } = useLanguage();
 
   return (
     <section id="contatti" className="relative py-40 px-6 overflow-hidden">
@@ -17,11 +19,11 @@ const Contact = () => {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
-            Inizia il <span className="text-gradient-electric text-glow">viaggio</span>
+            {t('contact.title')} <span className="text-gradient-electric text-glow">{t('contact.highlight')}</span>
           </h2>
 
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-16">
-            Hai un progetto ambizioso? Portiamolo al suo punto più alto
+            {t('contact.subtitle')}
           </p>
 
           <a

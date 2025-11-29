@@ -1,5 +1,8 @@
+import { useLanguage } from '../contexts/LanguageContext';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="relative border-t border-[#00b7ff]/20 bg-black/80 backdrop-blur-2xl overflow-hidden">
@@ -24,7 +27,7 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-[#00b7ff]/10 text-center">
           <p className="text-sm text-gray-500 tracking-wide">
-            © {currentYear} ZENITH. All rights reserved.
+            © {currentYear} ZENITH. {t('footer.rights')}.
           </p>
         </div>
       </div>

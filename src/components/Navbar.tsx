@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +23,13 @@ const Navbar = () => {
       setIsMobileMenuOpen(false);
     }
   };
+
+  const navItems = [
+    { key: 'about', id: 'chi-siamo' },
+    { key: 'projects', id: 'progetti' },
+    { key: 'services', id: 'servizi' },
+    { key: 'contact', id: 'contatti' }
+  ];
 
   return (
     <nav
@@ -41,17 +50,26 @@ const Navbar = () => {
           </button>
 
           <div className="hidden md:flex items-center space-x-10">
-            {['Chi siamo', 'Progetti', 'Servizi', 'Contatti'].map((item) => (
+            {navItems.map((item) => (
               <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                key={item.key}
+                onClick={() => scrollToSection(item.id)}
                 className="group relative text-sm font-semibold text-gray-300 hover:text-white transition-all duration-500 tracking-wider uppercase"
               >
-                <span className="relative z-10">{item}</span>
+                <span className="relative z-10">{t(`nav.${item.key}`)}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#00b7ff] to-[#8a2be2] group-hover:w-full transition-all duration-500 rounded-full" />
                 <span className="absolute inset-0 rounded-lg bg-[#00b7ff]/0 group-hover:bg-[#00b7ff]/10 transition-all duration-500 -z-10 blur-sm" />
               </button>
             ))}
+
+            <button
+              onClick={() => setLanguage(language === 'it' ? 'en' : 'it')}
+              className="group relative flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-white transition-all duration-500 tracking-wider uppercase"
+            >
+              <Globe size={18} className="text-[#00b7ff]" />
+              <span className="relative z-10">{language === 'it' ? 'EN' : 'IT'}</span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#00b7ff] to-[#8a2be2] group-hover:w-full transition-all duration-500 rounded-full" />
+            </button>
           </div>
 
           <button
@@ -70,16 +88,25 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-2xl border-t border-[#00b7ff]/20 shadow-[0_10px_40px_rgba(0,183,255,0.2)] animate-fadeIn">
           <div className="px-6 py-6 space-y-5">
-            {['Chi siamo', 'Progetti', 'Servizi', 'Contatti'].map((item, index) => (
+            {navItems.map((item, index) => (
               <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase().replace(' ', '-'))}
+                key={item.key}
+                onClick={() => scrollToSection(item.id)}
                 className="block w-full text-left text-base font-medium text-gray-300 hover:text-[#00b7ff] transition-all duration-300 py-2 border-l-2 border-transparent hover:border-[#00b7ff] pl-4 animate-fadeInUp"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
-                {item}
+                {t(`nav.${item.key}`)}
               </button>
             ))}
+
+            <button
+              onClick={() => setLanguage(language === 'it' ? 'en' : 'it')}
+              className="flex items-center gap-2 w-full text-left text-base font-medium text-gray-300 hover:text-[#00b7ff] transition-all duration-300 py-2 border-l-2 border-transparent hover:border-[#00b7ff] pl-4 animate-fadeInUp"
+              style={{ animationDelay: `${navItems.length * 50}ms` }}
+            >
+              <Globe size={18} />
+              <span>{language === 'it' ? 'English' : 'Italiano'}</span>
+            </button>
           </div>
         </div>
       )}

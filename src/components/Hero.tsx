@@ -1,8 +1,10 @@
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -178,7 +180,7 @@ const Hero = () => {
           className="group relative inline-flex items-center gap-3 px-8 py-4 bg-transparent border-2 border-[#00b7ff] rounded-full font-semibold text-base text-white transition-all duration-300 transform hover:scale-105 animate-fadeInUp animation-delay-400 overflow-hidden"
           style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif", willChange: 'transform' }}
         >
-          <span className="relative z-10">Esplora il futuro</span>
+          <span className="relative z-10">{t('hero.cta')}</span>
           <ArrowRight size={20} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
           <div className="absolute inset-0 bg-[#00b7ff] opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
         </button>

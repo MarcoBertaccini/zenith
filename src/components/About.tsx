@@ -1,14 +1,16 @@
 import { Brain, Code, Zap, Target } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const About = () => {
   const { ref, isInView } = useInView({ threshold: 0.2 });
+  const { t } = useLanguage();
 
   const values = [
-    { icon: Brain, title: 'Intelligenza Artificiale', desc: 'Sviluppiamo soluzioni AI avanzate per automatizzare processi e potenziare il business' },
-    { icon: Zap, title: 'Automazioni Intelligenti', desc: 'Ottimizziamo workflow aziendali con sistemi di automazione all\'avanguardia' },
-    { icon: Code, title: 'Web Design Evoluto', desc: 'Creiamo esperienze digitali moderne, performanti e scalabili' },
-    { icon: Target, title: 'Strategia & Visione', desc: 'Consulenza strategica per trasformare idee in progetti di successo' },
+    { icon: Brain, titleKey: 'about.value1.title', descKey: 'about.value1.desc' },
+    { icon: Zap, titleKey: 'about.value2.title', descKey: 'about.value2.desc' },
+    { icon: Code, titleKey: 'about.value3.title', descKey: 'about.value3.desc' },
+    { icon: Target, titleKey: 'about.value4.title', descKey: 'about.value4.desc' },
   ];
 
   return (
@@ -36,24 +38,21 @@ const About = () => {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
-            Chi è <span className="text-gradient-electric text-glow">ZENITH</span>
+            {t('about.title')} <span className="text-gradient-electric text-glow">{t('about.highlight')}</span>
           </h2>
 
           <div className="max-w-4xl mx-auto space-y-6">
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed tracking-wide">
-              <span className="text-[#00b7ff] font-bold text-glow">ZENITH</span> è un laboratorio di innovazione digitale specializzato in
-              <span className="text-gradient-electric font-semibold"> Intelligenza Artificiale</span>, automazioni intelligenti e web design di nuova generazione.
+              <span className="text-[#00b7ff] font-bold text-glow">{t('about.highlight')}</span> {t('about.desc1')}
+              <span className="text-gradient-electric font-semibold"> {t('about.desc1.highlight')}</span>{t('about.desc1.end')}
             </p>
 
             <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
-              Sviluppiamo soluzioni tecnologiche all'avanguardia che ridefiniscono i confini del possibile,
-              combinando <span className="text-[#8a2be2] font-semibold">visione strategica</span> e
-              <span className="text-[#00b7ff] font-semibold"> eccellenza tecnica</span>.
+              {t('about.desc2')} <span className="text-[#8a2be2] font-semibold">{t('about.desc2.vision')}</span> {t('about.desc2.and')} <span className="text-[#00b7ff] font-semibold"> {t('about.desc2.excellence')}</span>.
             </p>
 
             <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-              Il nostro approccio unisce creatività e precisione per trasformare idee ambiziose in realtà digitali concrete,
-              portando ogni progetto al suo punto più alto.
+              {t('about.desc3')}
             </p>
           </div>
         </div>
@@ -61,7 +60,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {values.map((value, index) => (
             <div
-              key={value.title}
+              key={value.titleKey}
               className={`group relative p-10 rounded-3xl border-2 border-[#00b7ff]/20 bg-gradient-to-br from-black/40 to-[#00b7ff]/5 backdrop-blur-xl hover:border-[#00b7ff]/50 transition-all duration-700 card-3d overflow-hidden hover:inset-glow ${
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
@@ -79,11 +78,11 @@ const About = () => {
                 </div>
 
                 <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#00b7ff] transition-colors duration-500 tracking-tight">
-                  {value.title}
+                  {t(value.titleKey)}
                 </h3>
 
                 <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-500">
-                  {value.desc}
+                  {t(value.descKey)}
                 </p>
               </div>
             </div>

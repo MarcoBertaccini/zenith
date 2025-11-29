@@ -1,26 +1,28 @@
 import { Bot, Globe, TrendingUp } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Services = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
+  const { t } = useLanguage();
 
   const services = [
     {
       icon: Bot,
-      title: 'AI Automation',
-      description: 'Soluzioni di Intelligenza Artificiale per automatizzare processi complessi e ottimizzare il business',
+      titleKey: 'services.ai.title',
+      descKey: 'services.ai.desc',
       features: ['Machine Learning', 'Natural Language Processing', 'Computer Vision', 'Predictive Analytics'],
     },
     {
       icon: Globe,
-      title: 'Web Design Avanzato',
-      description: 'Esperienze digitali moderne e performanti con design evoluto e architetture scalabili',
+      titleKey: 'services.web.title',
+      descKey: 'services.web.desc',
       features: ['UI/UX Design', 'Progressive Web Apps', 'Performance Optimization', 'Responsive Design'],
     },
     {
       icon: TrendingUp,
-      title: 'Strategie Digitali',
-      description: 'Consulenza strategica per trasformare visioni in progetti concreti e scalabili',
+      titleKey: 'services.strategy.title',
+      descKey: 'services.strategy.desc',
       features: ['Digital Transformation', 'Growth Strategy', 'Data Analytics', 'Innovation Consulting'],
     },
   ];
@@ -50,18 +52,18 @@ const Services = () => {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
-            <span className="text-gradient-electric text-glow">Servizi</span>
+            <span className="text-gradient-electric text-glow">{t('services.title')}</span>
           </h2>
 
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Soluzioni complete per portare il tuo business oltre i limiti
+            {t('services.subtitle')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
-              key={service.title}
+              key={service.titleKey}
               className={`group relative p-10 rounded-3xl border-2 border-[#00b7ff]/20 bg-gradient-to-br from-black/50 to-[#8a2be2]/5 backdrop-blur-xl hover:border-[#00b7ff]/50 transition-all duration-500 card-3d overflow-hidden hover:inset-glow ${
                 isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
@@ -79,11 +81,11 @@ const Services = () => {
                 </div>
 
                 <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#00b7ff] transition-colors duration-500 tracking-tight">
-                  {service.title}
+                  {t(service.titleKey)}
                 </h3>
 
                 <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors duration-500">
-                  {service.description}
+                  {t(service.descKey)}
                 </p>
 
                 <ul className="space-y-2.5">

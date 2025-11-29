@@ -1,59 +1,78 @@
 import { useState } from 'react';
 import { ExternalLink, Sparkles } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Projects = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
-  const [filter, setFilter] = useState('Tutti');
+  const [filter, setFilter] = useState('all');
+  const { t, language } = useLanguage();
 
   const projects = [
     {
-      title: 'AI Assistant per Fisioterapista',
-      category: 'AI & Automation',
-      description: 'Sistema di automazione intelligente per gestione pazienti, appuntamenti e piani terapeutici personalizzati',
-      tags: ['AI', 'Automazione', 'Healthcare'],
+      title: language === 'it' ? 'AI Assistant per Fisioterapista' : 'AI Assistant for Physiotherapist',
+      category: 'ai',
+      description: language === 'it'
+        ? 'Sistema di automazione intelligente per gestione pazienti, appuntamenti e piani terapeutici personalizzati'
+        : 'Intelligent automation system for patient management, appointments and personalized therapy plans',
+      tags: ['AI', language === 'it' ? 'Automazione' : 'Automation', 'Healthcare'],
       gradient: 'from-[#00b7ff] to-[#0095cc]',
     },
     {
-      title: 'Centro Benessere Premium',
-      category: 'Web Development',
-      description: 'Sito web elegante con sistema di prenotazione integrato e gestione servizi wellness',
+      title: language === 'it' ? 'Centro Benessere Premium' : 'Premium Wellness Center',
+      category: 'web',
+      description: language === 'it'
+        ? 'Sito web elegante con sistema di prenotazione integrato e gestione servizi wellness'
+        : 'Elegant website with integrated booking system and wellness services management',
       tags: ['Web', 'Design', 'Booking'],
       gradient: 'from-[#8a2be2] to-[#b14ee8]',
     },
     {
-      title: 'Piattaforma AI Intelligente',
-      category: 'AI & Web',
-      description: 'Sistema avanzato con raccomandazioni AI e assistente virtuale per supporto clienti in tempo reale',
+      title: language === 'it' ? 'Piattaforma AI Intelligente' : 'Intelligent AI Platform',
+      category: 'aiweb',
+      description: language === 'it'
+        ? 'Sistema avanzato con raccomandazioni AI e assistente virtuale per supporto clienti in tempo reale'
+        : 'Advanced system with AI recommendations and virtual assistant for real-time customer support',
       tags: ['AI', 'Machine Learning', 'Web'],
       gradient: 'from-[#00b7ff] to-[#8a2be2]',
     },
     {
-      title: 'Dashboard Analytics Avanzata',
-      category: 'Web Development',
-      description: 'Dashboard in tempo reale con visualizzazioni dati interattive e reportistica automatizzata',
-      tags: ['Web', 'Analytics', 'Automazione'],
+      title: language === 'it' ? 'Dashboard Analytics Avanzata' : 'Advanced Analytics Dashboard',
+      category: 'web',
+      description: language === 'it'
+        ? 'Dashboard in tempo reale con visualizzazioni dati interattive e reportistica automatizzata'
+        : 'Real-time dashboard with interactive data visualizations and automated reporting',
+      tags: ['Web', 'Analytics', language === 'it' ? 'Automazione' : 'Automation'],
       gradient: 'from-[#0095cc] to-[#00b7ff]',
     },
     {
-      title: 'Chatbot AI Multilingue',
-      category: 'AI & Automation',
-      description: 'Assistente AI conversazionale con supporto multilingue e integrazione CRM',
-      tags: ['AI', 'NLP', 'Automazione'],
+      title: language === 'it' ? 'Chatbot AI Multilingue' : 'Multilingual AI Chatbot',
+      category: 'ai',
+      description: language === 'it'
+        ? 'Assistente AI conversazionale con supporto multilingue e integrazione CRM'
+        : 'Conversational AI assistant with multilingual support and CRM integration',
+      tags: ['AI', 'NLP', language === 'it' ? 'Automazione' : 'Automation'],
       gradient: 'from-[#8a2be2] to-[#00b7ff]',
     },
     {
-      title: 'Sistema CRM Personalizzato',
-      category: 'Web Development',
-      description: 'CRM su misura con automazioni workflow e integrazione strumenti aziendali',
-      tags: ['Web', 'Automazione', 'Business'],
+      title: language === 'it' ? 'Sistema CRM Personalizzato' : 'Custom CRM System',
+      category: 'web',
+      description: language === 'it'
+        ? 'CRM su misura con automazioni workflow e integrazione strumenti aziendali'
+        : 'Tailored CRM with workflow automations and business tools integration',
+      tags: ['Web', language === 'it' ? 'Automazione' : 'Automation', 'Business'],
       gradient: 'from-[#b14ee8] to-[#8a2be2]',
     },
   ];
 
-  const categories = ['Tutti', 'AI & Automation', 'Web Development', 'AI & Web'];
+  const categories = [
+    { key: 'all', label: t('projects.filter.all') },
+    { key: 'ai', label: t('projects.filter.ai') },
+    { key: 'web', label: t('projects.filter.web') },
+    { key: 'aiweb', label: t('projects.filter.aiweb') }
+  ];
 
-  const filteredProjects = filter === 'Tutti'
+  const filteredProjects = filter === 'all'
     ? projects
     : projects.filter(p => p.category === filter);
 
@@ -71,26 +90,26 @@ const Projects = () => {
           </div>
 
           <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tighter">
-            Progetti <span className="text-gradient-electric text-glow">selezionati</span>
+            {t('projects.title')} <span className="text-gradient-electric text-glow">{t('projects.highlight')}</span>
           </h2>
 
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Trasformo idee innovative in soluzioni digitali concrete
+            {t('projects.subtitle')}
           </p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((category) => (
             <button
-              key={category}
-              onClick={() => setFilter(category)}
+              key={category.key}
+              onClick={() => setFilter(category.key)}
               className={`px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide uppercase transition-all duration-300 ${
-                filter === category
+                filter === category.key
                   ? 'bg-gradient-to-r from-[#00b7ff] to-[#8a2be2] text-white scale-105'
                   : 'bg-gradient-to-br from-[#00b7ff]/5 to-[#8a2be2]/5 text-gray-400 hover:text-white border border-[#00b7ff]/20 hover:border-[#00b7ff]/40 hover:scale-105'
               }`}
             >
-              {category}
+              {category.label}
             </button>
           ))}
         </div>
