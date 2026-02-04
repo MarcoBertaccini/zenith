@@ -51,8 +51,34 @@
     <meta name="twitter:image" content="https://zenith-studio.it/preview-zenith.jpg" />
   </head>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!-- Vapi Web Widget -->
+<script
+  src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+  async
+  type="text/javascript"
+></script>
+  
+ <body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Vapi Web Widget -->
+  <script
+    src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+    async
+    type="text/javascript"
+  ></script>
+
+  <vapi-widget
+    public-key="f4523277-43a5-43ba-8318-d2315fa9e793"
+    assistant-id="56e05ce2-0492-40de-b63a-bbda0ce12799"
+    mode="voice"
+    theme="light"
+    size="compact"
+    title="Zenith Assistant"
+    cta-title="Talk to us"
+    cta-subtitle="Reply right away"
+  ></vapi-widget>
+</body>
+
 </html>
