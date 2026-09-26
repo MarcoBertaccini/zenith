@@ -193,15 +193,20 @@ export default function LeadFunnel({ lang }: Props) {
 
   return (
     <div className="hairline rounded-2xl p-6 sm:p-10 bg-ink-900/60">
-      <ol className="flex items-center gap-3 mb-10" aria-label="progress">
+      <ol className="flex items-center gap-3 mb-10">
         {steps.map((s, i) => (
-          <li key={s.key} className="flex items-center gap-2">
+          <li
+            key={s.key}
+            className="flex items-center gap-2"
+            aria-current={i === currentStepIndex ? 'step' : undefined}
+          >
             <span
+              aria-hidden="true"
               className={`h-1.5 w-8 rounded-full transition-colors ${
                 i <= currentStepIndex ? 'bg-accent-500' : 'bg-line'
               }`}
             />
-            <span className="hidden sm:inline font-mono text-[11px] text-fg-subtle">{s.label}</span>
+            <span className="sr-only sm:not-sr-only font-mono text-[11px] text-fg-subtle">{s.label}</span>
           </li>
         ))}
       </ol>
@@ -230,7 +235,7 @@ export default function LeadFunnel({ lang }: Props) {
               onClick={goBack}
               className="mt-6 inline-flex items-center gap-2 text-sm text-fg-subtle hover:text-fg-muted"
             >
-              <ArrowLeft size={14} /> {t('funnel.cta.back')}
+              <ArrowLeft size={14} aria-hidden="true" /> {t('funnel.cta.back')}
             </button>
           )}
         </div>
@@ -249,7 +254,7 @@ export default function LeadFunnel({ lang }: Props) {
             onClick={() => setStage('details')}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-fg text-ink-950 px-6 py-3 text-sm font-medium hover-lift hover:bg-white"
           >
-            {t('funnel.result.cta')} <ArrowRight size={16} />
+            {t('funnel.result.cta')} <ArrowRight size={16} aria-hidden="true" />
           </button>
         </div>
       )}
@@ -361,7 +366,7 @@ export default function LeadFunnel({ lang }: Props) {
       {stage === 'done' && (
         <div>
           <span className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-accent-500/15 text-accent-400">
-            <Check size={18} />
+            <Check size={18} aria-hidden="true" />
           </span>
           <h3 className="mt-5 text-xl font-display font-medium">{t('funnel.done.heading')}</h3>
           <p className="mt-2 max-w-md text-sm text-fg-muted leading-relaxed">{t('funnel.done.body')}</p>
