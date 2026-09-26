@@ -22,11 +22,37 @@
 
 @layer utilities {
   .eyebrow {
-    @apply font-mono text-xs tracking-[0.2em] uppercase text-accent-400;
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-accent-500;
   }
 
   .hairline {
     @apply border border-line;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-xl bg-fg text-ink-950 text-[15px] font-medium px-5 py-3.5 min-h-[44px];
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-primary:hover {
+    background-color: #fff;
+  }
+
+  .btn-primary .btn-arrow {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(2px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center rounded-xl border border-line text-fg text-[15px] font-medium px-5 py-3.5 min-h-[44px];
+    transition: border-color 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    @apply border-accent-500;
   }
 
   /* Scroll-reveal: elements start hidden and are promoted to .is-visible

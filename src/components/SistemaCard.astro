@@ -1,0 +1,316 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  step: 1 | 2 | 3 | 4;
+  lang: Lang;
+}
+
+const { step, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="sysc-frame">
+  {step === 1 && (
+    <div class="sysc-browser">
+      <div class="sysc-chrome">
+        <span></span><span></span><span></span>
+        <span class="sysc-url">{t('sistema.site.url')}</span>
+      </div>
+      <div class="sysc-site">
+        <div class="sysc-site-nav"></div>
+        <p class="sysc-site-headline">{t('sistema.site.headline')}</p>
+        <div class="sysc-site-lines">
+          <span class="w-2/3"></span>
+          <span class="w-1/2"></span>
+        </div>
+        <div class="sysc-site-btn">{t('sistema.site.cta')}</div>
+      </div>
+    </div>
+  )}
+
+  {step === 2 && (
+    <div class="sysc-card">
+      <div class="sysc-head">
+        <span class="sysc-badge sysc-badge-wa" aria-hidden="true">W</span>
+        <span class="sysc-app">{t('hero.card1.app')}</span>
+        <span class="sysc-time">{t('hero.card1.time')}</span>
+      </div>
+      <p class="sysc-title">{t('hero.card1.title')}</p>
+      <p class="sysc-body">{t('hero.card1.body')}</p>
+      <span class="sysc-success">{t('hero.card1.badge')}</span>
+    </div>
+  )}
+
+  {step === 3 && (
+    <div class="sysc-card">
+      <div class="sysc-head">
+        <span class="sysc-badge sysc-badge-n8n" aria-hidden="true">n8n</span>
+        <span class="sysc-app">{t('hero.card2.app')}</span>
+        <span class="sysc-time">{t('hero.card2.time')}</span>
+      </div>
+      <p class="sysc-title">{t('hero.card2.title')}</p>
+      <div class="sysc-flow" aria-hidden="true">
+        <span class="sysc-node">{t('hero.card2.node1')}</span>
+        <span class="sysc-line"><span class="sysc-dot"></span></span>
+        <span class="sysc-node">{t('hero.card2.node2')}</span>
+        <span class="sysc-line"><span class="sysc-dot sysc-dot-delay"></span></span>
+        <span class="sysc-node">{t('hero.card2.node3')}</span>
+      </div>
+    </div>
+  )}
+
+  {step === 4 && (
+    <div class="sysc-card">
+      <div class="sysc-head">
+        <span class="sysc-badge sysc-badge-analytics" aria-hidden="true">Z</span>
+        <span class="sysc-app">{t('hero.card3.app')}</span>
+        <span class="sysc-time">{t('hero.card3.time')}</span>
+      </div>
+      <p class="sysc-title">{t('hero.card3.title')}</p>
+      <p class="sysc-stat">{t('hero.card3.stat')}</p>
+      <div class="sysc-bars" aria-hidden="true">
+        <span style="height:30%"></span>
+        <span style="height:42%"></span>
+        <span style="height:38%"></span>
+        <span style="height:60%"></span>
+        <span style="height:100%"></span>
+      </div>
+      <span class="sysc-delta">{t('hero.card3.delta')}</span>
+    </div>
+  )}
+</div>
+
+<style>
+  .sysc-frame {
+    height: 100%;
+  }
+
+  .sysc-card,
+  .sysc-browser {
+    background: #16161a;
+    border: 1px solid rgb(255 255 255 / 0.08);
+    border-radius: 20px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .sysc-card {
+    padding: 24px;
+  }
+
+  .sysc-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  }
+
+  .sysc-chrome span:not(.sysc-url) {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.16);
+  }
+
+  .sysc-url {
+    margin-left: 8px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: #7a7a78;
+  }
+
+  .sysc-site {
+    padding: 28px 24px;
+  }
+
+  .sysc-site-nav {
+    height: 8px;
+    width: 30%;
+    border-radius: 4px;
+    background: #1e1e23;
+    margin-bottom: 24px;
+  }
+
+  .sysc-site-headline {
+    font-family: 'General Sans', 'Inter Tight', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #f5f5f4;
+    margin-bottom: 16px;
+  }
+
+  .sysc-site-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .sysc-site-lines span {
+    height: 8px;
+    border-radius: 4px;
+    background: #1e1e23;
+  }
+
+  .sysc-site-btn {
+    display: inline-flex;
+    width: fit-content;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #ffb547;
+    color: #08080a;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .sysc-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .sysc-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: #08080a;
+    flex-shrink: 0;
+  }
+
+  .sysc-badge-wa { background: #3ddc97; }
+  .sysc-badge-n8n { background: #ffb547; font-size: 8px; width: 30px; }
+  .sysc-badge-analytics { background: #7cc4ff; }
+
+  .sysc-app {
+    font-size: 14px;
+    font-weight: 500;
+    color: #f5f5f4;
+  }
+
+  .sysc-time {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: #7a7a78;
+  }
+
+  .sysc-title {
+    font-family: 'General Sans', 'Inter Tight', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #f5f5f4;
+    margin-bottom: 10px;
+  }
+
+  .sysc-body {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #bdbdba;
+  }
+
+  .sysc-success {
+    display: inline-flex;
+    margin-top: 16px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgb(61 220 151 / 0.15);
+    color: #3ddc97;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .sysc-flow {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .sysc-node {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: #f5f5f4;
+    background: #1e1e23;
+    border: 1px solid rgb(255 255 255 / 0.08);
+    border-radius: 8px;
+    padding: 8px 12px;
+    flex-shrink: 0;
+  }
+
+  .sysc-line {
+    position: relative;
+    flex: 1;
+    height: 1px;
+    background: rgb(255 255 255 / 0.08);
+    min-width: 24px;
+  }
+
+  .sysc-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffb547;
+    transform: translate(-50%, -50%);
+    animation: sysc-dot-flow 2.4s linear infinite;
+  }
+
+  .sysc-dot-delay {
+    animation-delay: 1.2s;
+  }
+
+  @keyframes sysc-dot-flow {
+    0% { left: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .sysc-stat {
+    font-size: 16px;
+    font-weight: 500;
+    color: #f5f5f4;
+    margin-bottom: 16px;
+  }
+
+  .sysc-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 48px;
+    margin-bottom: 14px;
+  }
+
+  .sysc-bars span {
+    flex: 1;
+    background: #1e1e23;
+    border-radius: 2px;
+  }
+
+  .sysc-bars span:last-child {
+    background: #ffb547;
+  }
+
+  .sysc-delta {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px;
+    color: #3ddc97;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sysc-dot {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>

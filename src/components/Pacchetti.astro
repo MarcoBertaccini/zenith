@@ -1,0 +1,72 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const baseItems = [
+  t('pacchetti.base.item1'),
+  t('pacchetti.base.item2'),
+  t('pacchetti.base.item3'),
+  t('pacchetti.base.item4'),
+  t('pacchetti.base.item5'),
+];
+
+const proItems = [
+  t('pacchetti.pro.item1'),
+  t('pacchetti.pro.item2'),
+  t('pacchetti.pro.item3'),
+  t('pacchetti.pro.item4'),
+  t('pacchetti.pro.item5'),
+];
+---
+
+<section id="pacchetti" class="py-32 border-t border-line">
+  <div class="mx-auto max-w-content px-6">
+    <div class="max-w-2xl mb-16">
+      <h2 class="text-3xl md:text-4xl font-display font-semibold tracking-tight" data-reveal>
+        <span class="text-fg-muted">{t('pacchetti.heading.muted')}</span>{' '}
+        <span class="text-fg">{t('pacchetti.heading.fg')}</span>
+      </h2>
+      <p class="mt-5 text-fg-body text-lg max-w-[60ch]" data-reveal>{t('pacchetti.sub')}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="rounded-card border border-line bg-ink-800 p-8" data-reveal>
+        <p class="text-fg font-display text-xl font-medium">{t('pacchetti.base.name')}</p>
+        <p class="mt-3 text-2xl font-display font-semibold">{t('pacchetti.base.price')}</p>
+        <p class="mt-3 text-sm text-fg-body">{t('pacchetti.base.desc')}</p>
+        <ul class="mt-6 space-y-3">
+          {baseItems.map((item) => (
+            <li class="flex items-start gap-2 text-sm text-fg-body">
+              <span class="mt-1.5 h-1 w-1 rounded-full bg-fg-subtle shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href="#contatti" class="btn-secondary mt-8">{t('pacchetti.cta')}</a>
+      </div>
+
+      <div class="relative rounded-card border border-accent-500 bg-ink-700 p-8" data-reveal style="transition-delay:80ms">
+        <span class="eyebrow absolute top-8 right-8">{t('pacchetti.pro.badge')}</span>
+        <p class="text-fg font-display text-xl font-medium">{t('pacchetti.pro.name')}</p>
+        <p class="mt-3 text-2xl font-display font-semibold">{t('pacchetti.pro.price')}</p>
+        <p class="mt-3 text-sm text-fg-body">{t('pacchetti.pro.desc')}</p>
+        <ul class="mt-6 space-y-3">
+          {proItems.map((item) => (
+            <li class="flex items-start gap-2 text-sm text-fg-body">
+              <span class="mt-1.5 h-1 w-1 rounded-full bg-accent-500 shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href="#contatti" class="btn-primary mt-8">
+          {t('pacchetti.cta')}
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <p class="mt-6 text-xs text-fg-subtle">{t('pacchetti.note')}</p>
+  </div>
+</section>

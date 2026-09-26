@@ -192,7 +192,7 @@ export default function LeadFunnel({ lang }: Props) {
   const currentStepIndex = steps.findIndex((s) => s.key === stage);
 
   return (
-    <div className="hairline rounded-2xl p-6 sm:p-10 bg-ink-900/60">
+    <div className="hairline rounded-card p-6 sm:p-10 bg-ink-800">
       <ol className="flex items-center gap-3 mb-10">
         {steps.map((s, i) => (
           <li
@@ -223,7 +223,7 @@ export default function LeadFunnel({ lang }: Props) {
                 key={option.value}
                 type="button"
                 onClick={() => selectAnswer(quizQuestions[quizStep].key, option.value)}
-                className="text-left hairline rounded-xl px-5 py-4 text-sm text-fg hover-lift hover:border-accent-500/60 hover:bg-ink-800"
+                className="text-left hairline rounded-xl px-5 py-4 text-sm text-fg hover-lift hover:border-accent-500 hover:bg-ink-700"
               >
                 {option.label}
               </button>
@@ -249,12 +249,8 @@ export default function LeadFunnel({ lang }: Props) {
             <span className="text-lg text-fg-muted font-sans font-normal ml-2">{t('funnel.result.perYear')}</span>
           </p>
           <p className="mt-5 max-w-md text-sm text-fg-muted leading-relaxed">{t('funnel.result.body')}</p>
-          <button
-            type="button"
-            onClick={() => setStage('details')}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-fg text-ink-950 px-6 py-3 text-sm font-medium hover-lift hover:bg-white"
-          >
-            {t('funnel.result.cta')} <ArrowRight size={16} aria-hidden="true" />
+          <button type="button" onClick={() => setStage('details')} className="btn-primary mt-8">
+            {t('funnel.result.cta')} <ArrowRight size={16} aria-hidden="true" className="btn-arrow" />
           </button>
         </div>
       )}
@@ -271,7 +267,7 @@ export default function LeadFunnel({ lang }: Props) {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-lg bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
+                className="w-full rounded-xl bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
                 aria-invalid={Boolean(errors.name)}
                 aria-describedby={errors.name ? 'name-error' : undefined}
               />
@@ -291,7 +287,7 @@ export default function LeadFunnel({ lang }: Props) {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
+                className="w-full rounded-xl bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? 'email-error' : undefined}
               />
@@ -311,7 +307,7 @@ export default function LeadFunnel({ lang }: Props) {
                 type="text"
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-                className="w-full rounded-lg bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
+                className="w-full rounded-xl bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
               />
             </div>
 
@@ -324,7 +320,7 @@ export default function LeadFunnel({ lang }: Props) {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full rounded-lg bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
+                className="w-full rounded-xl bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
               />
             </div>
 
@@ -337,7 +333,7 @@ export default function LeadFunnel({ lang }: Props) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={3}
-                className="w-full rounded-lg bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
+                className="w-full rounded-xl bg-ink-950 hairline px-4 py-3 text-sm text-fg focus:outline-none focus:border-accent-500"
               />
             </div>
           </div>
@@ -356,7 +352,7 @@ export default function LeadFunnel({ lang }: Props) {
           <button
             type="submit"
             disabled={submitting}
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-fg text-ink-950 px-6 py-3 text-sm font-medium hover-lift hover:bg-white disabled:opacity-60"
+            className="btn-primary mt-4 disabled:opacity-60"
           >
             {submitting ? t('funnel.details.submitting') : t('funnel.details.submit')}
           </button>

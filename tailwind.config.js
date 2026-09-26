@@ -6,30 +6,40 @@ export default {
     extend: {
       colors: {
         ink: {
-          950: '#0B0C0E',
-          900: '#131417',
-          800: '#1C1E22',
-          700: '#26282E',
+          950: '#08080A',
+          900: '#0F0F12',
+          800: '#16161A',
+          700: '#1E1E23',
         },
-        line: '#2A2D33',
+        line: 'rgb(255 255 255 / 0.08)',
         fg: {
-          DEFAULT: '#EDEDEF',
-          muted: '#9A9CA3',
-          subtle: '#6B6D74',
+          DEFAULT: '#F5F5F4',
+          muted: 'rgb(245 245 244 / 0.5)',
+          body: '#BDBDBA',
+          subtle: '#7A7A78',
         },
         accent: {
-          400: '#7CB3B8',
-          500: '#5B9AA0',
-          600: '#457780',
+          400: '#FFD89A',
+          500: '#FFB547',
+          600: '#E69A2E',
+        },
+        success: '#3DDC97',
+        info: '#7CC4FF',
+        paper: {
+          DEFAULT: '#F5F5F4',
+          ink: '#08080A',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        display: ['"General Sans"', '"Inter Tight"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       maxWidth: {
-        content: '72rem',
+        content: '1200px',
+      },
+      borderRadius: {
+        card: '20px',
       },
     },
   },

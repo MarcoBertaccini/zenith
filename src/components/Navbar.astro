@@ -8,10 +8,10 @@ const otherLang = lang === 'it' ? 'en' : 'it';
 const otherHref = lang === 'it' ? '/en/' : '/';
 
 const links = [
-  { href: '#cosa-facciamo', label: t('nav.positioning') },
-  { href: '#servizi', label: t('nav.services') },
-  { href: '#come-lavoriamo', label: t('nav.process') },
-  { href: '#progetti', label: t('nav.projects') },
+  { href: '#lavori', label: t('nav.lavori') },
+  { href: '#il-sistema', label: t('nav.sistema') },
+  { href: '#pacchetti', label: t('nav.pacchetti') },
+  { href: '#metodo', label: t('nav.metodo') },
 ];
 ---
 
@@ -42,7 +42,7 @@ const links = [
       </a>
       <a
         href="#contatti"
-        class="hidden sm:inline-flex items-center rounded-full border border-line px-4 py-2 text-sm text-fg hover-lift hover:border-accent-500/60"
+        class="hidden sm:inline-flex items-center rounded-xl border border-line px-4 py-2 text-sm text-fg hover-lift hover:border-accent-500"
       >
         {t('nav.cta')}
       </a>
