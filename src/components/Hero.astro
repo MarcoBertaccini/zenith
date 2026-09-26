@@ -5,54 +5,431 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section id="hero" class="relative pt-40 pb-28 md:pt-48 md:pb-36 overflow-hidden">
-  <div class="mx-auto max-w-content px-6 grid md:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
-    <div>
-      <p class="eyebrow mb-6" data-reveal>{t('hero.eyebrow')}</p>
+<link
+  href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600&display=swap"
+  rel="stylesheet"
+/>
 
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight" data-reveal>
-        {t('hero.headline.pre')}{' '}
-        <span class="text-accent-500">{t('hero.headline.highlight')}</span>{' '}
-        {t('hero.headline.post')}
-      </h1>
-
-      <p class="mt-6 max-w-xl text-lg text-fg-muted" data-reveal>
-        {t('hero.sub')}
-      </p>
-
-      <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal>
-        <a
-          href="#contatti"
-          class="inline-flex items-center rounded-full bg-fg text-ink-950 px-6 py-3 text-sm font-medium hover-lift hover:bg-white"
-        >
-          {t('hero.cta.primary')}
-        </a>
-        <a
-          href="#come-lavoriamo"
-          class="inline-flex items-center rounded-full border border-line px-6 py-3 text-sm text-fg-muted hover-lift hover:text-fg hover:border-accent-500/60"
-        >
-          {t('hero.cta.secondary')}
-        </a>
-      </div>
+<section id="hero" class="zenith-hero relative overflow-x-clip">
+  <div
+    class="relative mx-auto max-w-[1200px] px-6 md:px-8 pt-24 pb-24 md:pt-40 md:pb-40 flex flex-col items-center text-center"
+  >
+    <div class="hero-orb-wrap" aria-hidden="true">
+      <div class="hero-orb"></div>
     </div>
 
-    <div class="relative hidden md:block" data-reveal aria-hidden="true">
-      <svg viewBox="0 0 360 320" class="w-full h-auto text-line" fill="none">
-        <g stroke="currentColor" stroke-width="1">
-          <line x1="60" y1="60" x2="180" y2="150" />
-          <line x1="300" y1="50" x2="180" y2="150" />
-          <line x1="180" y1="150" x2="90" y2="250" />
-          <line x1="180" y1="150" x2="270" y2="260" />
-          <line x1="90" y1="250" x2="270" y2="260" />
-        </g>
-        <g>
-          <circle cx="60" cy="60" r="6" class="fill-fg-subtle" />
-          <circle cx="300" cy="50" r="6" class="fill-fg-subtle" />
-          <circle cx="180" cy="150" r="9" class="fill-accent-500" />
-          <circle cx="90" cy="250" r="6" class="fill-fg-subtle" />
-          <circle cx="270" cy="260" r="6" class="fill-fg-subtle" />
-        </g>
-      </svg>
+    <h1 class="hero-h1 relative z-10">
+      <span class="hero-fg-muted">{t('hero.h1.muted')}</span>{' '}
+      <span class="hero-fg">{t('hero.h1.fg')}</span>
+    </h1>
+
+    <p class="hero-lead relative z-10">{t('hero.lead')}</p>
+
+    <div class="relative z-10 mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="#contatti" class="hero-btn-primary">
+        {t('hero.cta.primary')}
+        <span class="hero-btn-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="#come-lavoriamo" class="hero-btn-secondary">
+        {t('hero.cta.secondary')}
+      </a>
+    </div>
+
+    <div class="hero-cards-viewport mt-14 md:mt-0" role="group" aria-label={t('hero.cards.groupLabel')}>
+      <div class="hero-cards-track">
+        <div class="hero-card hero-card-1">
+          <div class="hero-card-head">
+            <span class="hero-app-badge hero-app-badge-wa" aria-hidden="true">W</span>
+            <span class="hero-app-name">{t('hero.card1.app')}</span>
+            <span class="hero-app-time">{t('hero.card1.time')}</span>
+          </div>
+          <p class="hero-card-title">{t('hero.card1.title')}</p>
+          <p class="hero-card-body">{t('hero.card1.body')}</p>
+          <span class="hero-badge-success">{t('hero.card1.badge')}</span>
+        </div>
+
+        <div class="hero-card hero-card-2">
+          <div class="hero-card-head">
+            <span class="hero-app-badge hero-app-badge-n8n" aria-hidden="true">n8n</span>
+            <span class="hero-app-name">{t('hero.card2.app')}</span>
+            <span class="hero-app-time">{t('hero.card2.time')}</span>
+          </div>
+          <p class="hero-card-title">{t('hero.card2.title')}</p>
+          <div class="hero-flow" aria-hidden="true">
+            <span class="hero-node">{t('hero.card2.node1')}</span>
+            <span class="hero-line"><span class="hero-dot"></span></span>
+            <span class="hero-node">{t('hero.card2.node2')}</span>
+            <span class="hero-line"><span class="hero-dot hero-dot-delay"></span></span>
+            <span class="hero-node">{t('hero.card2.node3')}</span>
+          </div>
+        </div>
+
+        <div class="hero-card hero-card-3">
+          <div class="hero-card-head">
+            <span class="hero-app-badge hero-app-badge-analytics" aria-hidden="true">Z</span>
+            <span class="hero-app-name">{t('hero.card3.app')}</span>
+            <span class="hero-app-time">{t('hero.card3.time')}</span>
+          </div>
+          <p class="hero-card-title">{t('hero.card3.title')}</p>
+          <p class="hero-card-stat">{t('hero.card3.stat')}</p>
+          <div class="hero-bars" aria-hidden="true">
+            <span style="height:30%"></span>
+            <span style="height:42%"></span>
+            <span style="height:38%"></span>
+            <span style="height:60%"></span>
+            <span style="height:100%"></span>
+          </div>
+          <span class="hero-card-delta">{t('hero.card3.delta')}</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .zenith-hero {
+    --zh-ink: #08080a;
+    --zh-surface: #16161a;
+    --zh-surface-2: #1e1e23;
+    --zh-line: rgb(255 255 255 / 0.08);
+    --zh-fg: #f5f5f4;
+    --zh-fg-muted: rgb(245 245 244 / 0.5);
+    --zh-fg-body: #bdbdba;
+    --zh-fg-subtle: #7a7a78;
+    --zh-accent: #ffb547;
+    --zh-accent-soft: #ffd89a;
+    --zh-accent-glow: rgb(255 181 71 / 0.18);
+    --zh-success: #3ddc97;
+
+    background: var(--zh-ink);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .hero-orb-wrap {
+    position: relative;
+    width: min(640px, 90vw);
+    height: 180px;
+    pointer-events: none;
+  }
+
+  .hero-orb {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 42%, var(--zh-accent-soft) 0%, var(--zh-accent) 28%, rgb(255 181 71 / 0.35) 52%, transparent 72%);
+    filter: blur(2px);
+    animation: hero-breathe 6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .hero-orb::after {
+    content: '';
+    position: absolute;
+    inset: -60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--zh-accent-glow) 0%, transparent 70%);
+  }
+
+  @keyframes hero-breathe {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.92; }
+    50% { transform: translateX(-50%) scale(1.05); opacity: 1; }
+  }
+
+  .hero-h1 {
+    font-family: 'General Sans', 'Inter Tight', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    font-size: clamp(2.75rem, 1.5rem + 5.5vw, 5.5rem);
+    max-width: 16ch;
+    color: var(--zh-fg);
+  }
+
+  .hero-fg-muted {
+    color: var(--zh-fg-muted);
+  }
+
+  .hero-fg {
+    color: var(--zh-fg);
+  }
+
+  .hero-lead {
+    margin-top: 24px;
+    font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--zh-fg-body);
+    max-width: 60ch;
+  }
+
+  .hero-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--zh-fg);
+    color: var(--zh-ink);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 20px;
+    border-radius: 12px;
+    min-height: 44px;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-btn-arrow {
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-btn-primary:hover .hero-btn-arrow {
+    transform: translateX(2px);
+  }
+
+  .hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--zh-line);
+    color: var(--zh-fg);
+    font-size: 15px;
+    font-weight: 500;
+    transition: border-color 0.2s ease;
+  }
+
+  .hero-btn-secondary:hover {
+    border-color: var(--zh-accent);
+  }
+
+  /* Product cards: mobile/tablet = horizontal snap carousel, desktop (lg+) = floating, breaking the container edges */
+  .hero-cards-viewport {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .hero-cards-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-cards-track {
+    display: flex;
+    gap: 16px;
+    padding: 0 24px;
+    margin: 0 -24px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .hero-card {
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+    width: 260px;
+    background: var(--zh-surface);
+    border: 1px solid var(--zh-line);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: hero-card-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .hero-card-1 { animation-delay: 0.1s; }
+  .hero-card-2 { animation-delay: 0.18s; }
+  .hero-card-3 { animation-delay: 0.26s; }
+
+  @keyframes hero-card-in {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .hero-app-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--zh-ink);
+    flex-shrink: 0;
+  }
+
+  .hero-app-badge-wa { background: #3ddc97; }
+  .hero-app-badge-n8n { background: var(--zh-accent); font-size: 8px; width: 28px; border-radius: 6px; }
+  .hero-app-badge-analytics { background: #7cc4ff; }
+
+  .hero-app-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--zh-fg);
+  }
+
+  .hero-app-time {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--zh-fg-subtle);
+  }
+
+  .hero-card-title {
+    font-family: 'General Sans', 'Inter Tight', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--zh-fg);
+    margin-bottom: 6px;
+  }
+
+  .hero-card-body {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--zh-fg-body);
+  }
+
+  .hero-badge-success {
+    display: inline-flex;
+    margin-top: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgb(61 220 151 / 0.15);
+    color: var(--zh-success);
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .hero-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 8px;
+  }
+
+  .hero-node {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    color: var(--zh-fg);
+    background: var(--zh-surface-2);
+    border: 1px solid var(--zh-line);
+    border-radius: 8px;
+    padding: 6px 10px;
+    flex-shrink: 0;
+  }
+
+  .hero-line {
+    position: relative;
+    flex: 1;
+    height: 1px;
+    background: var(--zh-line);
+    min-width: 20px;
+  }
+
+  .hero-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--zh-accent);
+    transform: translate(-50%, -50%);
+    animation: hero-dot-flow 2.4s linear infinite;
+  }
+
+  .hero-dot-delay {
+    animation-delay: 1.2s;
+  }
+
+  @keyframes hero-dot-flow {
+    0% { left: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  .hero-card-stat {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--zh-fg);
+    margin-bottom: 12px;
+  }
+
+  .hero-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 36px;
+    margin-bottom: 10px;
+  }
+
+  .hero-bars span {
+    flex: 1;
+    background: var(--zh-surface-2);
+    border-radius: 2px;
+  }
+
+  .hero-bars span:last-child {
+    background: var(--zh-accent);
+  }
+
+  .hero-card-delta {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+    color: var(--zh-success);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-cards-viewport {
+      position: absolute;
+      inset: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .hero-cards-track {
+      display: contents;
+    }
+
+    .hero-card {
+      position: absolute;
+      pointer-events: auto;
+    }
+
+    .hero-card-1 { top: 44px; left: -40px; }
+    .hero-card-2 { top: 528px; right: -60px; }
+    .hero-card-3 { bottom: 44px; left: -64px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-orb {
+      animation: none;
+    }
+
+    .hero-card {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .hero-dot {
+      animation: none;
+      opacity: 0;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-arrow,
+    .hero-btn-secondary {
+      transition: none;
+    }
+  }
+</style>

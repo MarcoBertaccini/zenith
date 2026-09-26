@@ -18,14 +18,32 @@ export const ui = {
     'nav.contact': 'Contatti',
     'nav.cta': 'Prenota una call',
 
-    'hero.eyebrow': 'Sviluppo Web & Automazione dei Processi',
-    'hero.headline.pre': 'Costruiamo i sistemi che tolgono',
-    'hero.headline.highlight': 'il lavoro ripetitivo',
-    'hero.headline.post': 'dal tuo team.',
-    'hero.sub':
-      'Siti ad alte prestazioni e automazioni su misura per aziende, studi e negozi che vogliono smettere di perdere ore su attività manuali.',
-    'hero.cta.primary': 'Prenota una consulenza',
+    'hero.h1.muted': 'Il tuo sito lavora',
+    'hero.h1.fg': 'anche quando tu dormi.',
+    'hero.lead':
+      'Sito, automazioni e notifiche che trasformano ogni visita in una richiesta — e ogni richiesta in un cliente.',
+    'hero.cta.primary': 'Prenota una chiamata',
     'hero.cta.secondary': 'Guarda come lavoriamo',
+
+    'hero.cards.groupLabel': 'Esempi di automazioni Zenith in azione',
+    'hero.card1.title': 'Nuova richiesta',
+    'hero.card1.app': 'WhatsApp Business',
+    'hero.card1.time': '2 min fa',
+    'hero.card1.body': 'Nuova prenotazione · Camera Deluxe · 3 notti · 14–17 ott',
+    'hero.card1.badge': 'Confermata',
+
+    'hero.card2.title': 'Automazione attiva',
+    'hero.card2.app': 'n8n',
+    'hero.card2.time': 'In esecuzione',
+    'hero.card2.node1': 'Form',
+    'hero.card2.node2': 'CRM',
+    'hero.card2.node3': 'WhatsApp',
+
+    'hero.card3.title': 'Report mensile',
+    'hero.card3.app': 'Zenith Analytics',
+    'hero.card3.time': 'Ottobre 2026',
+    'hero.card3.stat': 'Richieste dal sito: 47',
+    'hero.card3.delta': '+32% vs mese scorso',
 
     'positioning.eyebrow': 'Cosa facciamo',
     'positioning.heading': 'Non costruiamo solo siti web.',
@@ -154,14 +172,32 @@ export const ui = {
     'nav.contact': 'Contact',
     'nav.cta': 'Book a call',
 
-    'hero.eyebrow': 'Web Development & Process Automation',
-    'hero.headline.pre': 'We build the systems that take',
-    'hero.headline.highlight': 'repetitive work',
-    'hero.headline.post': 'off your team’s plate.',
-    'hero.sub':
-      'High-performance websites and custom automation for businesses, studios and shops ready to stop losing hours on manual work.',
-    'hero.cta.primary': 'Book a consultation',
+    'hero.h1.muted': 'Your website works',
+    'hero.h1.fg': 'even while you sleep.',
+    'hero.lead':
+      'A website, automations and notifications that turn every visit into a request — and every request into a customer.',
+    'hero.cta.primary': 'Book a call',
     'hero.cta.secondary': 'See how we work',
+
+    'hero.cards.groupLabel': 'Examples of Zenith automations at work',
+    'hero.card1.title': 'New request',
+    'hero.card1.app': 'WhatsApp Business',
+    'hero.card1.time': '2 min ago',
+    'hero.card1.body': 'New booking · Deluxe Room · 3 nights · Oct 14–17',
+    'hero.card1.badge': 'Confirmed',
+
+    'hero.card2.title': 'Automation running',
+    'hero.card2.app': 'n8n',
+    'hero.card2.time': 'Running',
+    'hero.card2.node1': 'Form',
+    'hero.card2.node2': 'CRM',
+    'hero.card2.node3': 'WhatsApp',
+
+    'hero.card3.title': 'Monthly report',
+    'hero.card3.app': 'Zenith Analytics',
+    'hero.card3.time': 'October 2026',
+    'hero.card3.stat': 'Website requests: 47',
+    'hero.card3.delta': '+32% vs last month',
 
     'positioning.eyebrow': 'What we do',
     'positioning.heading': 'We don’t just build websites.',
