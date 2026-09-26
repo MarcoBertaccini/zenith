@@ -1,0 +1,90 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const otherLang = lang === 'it' ? 'en' : 'it';
+const otherHref = lang === 'it' ? '/en/' : '/';
+
+const links = [
+  { href: '#cosa-facciamo', label: t('nav.positioning') },
+  { href: '#servizi', label: t('nav.services') },
+  { href: '#come-lavoriamo', label: t('nav.process') },
+  { href: '#progetti', label: t('nav.projects') },
+];
+---
+
+<header class="fixed top-0 inset-x-0 z-50 border-b border-line/60 bg-ink-950/80 backdrop-blur-md">
+  <div class="mx-auto max-w-content px-6 h-16 flex items-center justify-between">
+    <a href={lang === 'it' ? '/' : '/en/'} class="font-display font-semibold text-lg tracking-tight text-fg">
+      ZENITH<span class="text-accent-500">.</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm text-fg-muted hover:text-fg transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a
+        href={otherHref}
+        class="font-mono text-xs text-fg-subtle hover:text-fg-muted transition-colors"
+        aria-label={`Switch language to ${otherLang}`}
+      >
+        {otherLang.toUpperCase()}
+      </a>
+      <a
+        href="#contatti"
+        class="hidden sm:inline-flex items-center rounded-full border border-line px-4 py-2 text-sm text-fg hover-lift hover:border-accent-500/60"
+      >
+        {t('nav.cta')}
+      </a>
+      <button
+        id="menu-toggle"
+        type="button"
+        class="md:hidden text-fg-muted hover:text-fg"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" class="hidden md:hidden border-t border-line/60 bg-ink-950 px-6 py-4 flex flex-col gap-4">
+    {links.map((link) => (
+      <a href={link.href} class="text-sm text-fg-muted hover:text-fg transition-colors">
+        {link.label}
+      </a>
+    ))}
+    <a href="#contatti" class="text-sm text-accent-400">{t('nav.cta')}</a>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isHidden = menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(Boolean(isHidden)));
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

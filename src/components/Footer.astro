@@ -1,0 +1,30 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line/60 py-12">
+  <div class="mx-auto max-w-content px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <div>
+      <p class="font-display font-semibold text-lg">ZENITH<span class="text-accent-500">.</span></p>
+      <p class="mt-1 text-sm text-fg-subtle">{t('footer.tagline')}</p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-6 text-sm text-fg-muted">
+      <a href="mailto:info@zenith-studio.it" class="hover:text-fg transition-colors">info@zenith-studio.it</a>
+      <a href="https://www.linkedin.com/company/zenith-studio" class="hover:text-fg transition-colors" rel="noopener">
+        LinkedIn
+      </a>
+      <a href="https://www.instagram.com/zenith.studio" class="hover:text-fg transition-colors" rel="noopener">
+        Instagram
+      </a>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-content px-6 mt-8 pt-6 border-t border-line/40 text-xs text-fg-subtle">
+    © {year} Zenith Studio. {t('footer.rights')}
+  </div>
+</footer>

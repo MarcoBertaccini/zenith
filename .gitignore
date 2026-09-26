@@ -11,6 +11,12 @@ dist
 dist-ssr
 *.local
 
+# Astro
+.astro/
+
+# Local dev tooling (machine-specific paths)
+.claude/
+
 .vscode/*
 !.vscode/extensions.json
 .idea

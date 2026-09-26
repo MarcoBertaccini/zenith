@@ -1,0 +1,35 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const steps = [
+  { title: t('process.step1.title'), desc: t('process.step1.desc') },
+  { title: t('process.step2.title'), desc: t('process.step2.desc') },
+  { title: t('process.step3.title'), desc: t('process.step3.desc') },
+  { title: t('process.step4.title'), desc: t('process.step4.desc') },
+];
+---
+
+<section id="come-lavoriamo" class="py-24 md:py-32 border-t border-line/60">
+  <div class="mx-auto max-w-content px-6">
+    <div class="max-w-2xl mb-16">
+      <p class="eyebrow mb-4" data-reveal>{t('process.eyebrow')}</p>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight" data-reveal>
+        {t('process.heading')}
+      </h2>
+    </div>
+
+    <ol class="grid md:grid-cols-4 gap-8">
+      {steps.map((step, i) => (
+        <li data-reveal style={`transition-delay:${i * 80}ms`}>
+          <div class="font-mono text-sm text-accent-500">{`0${i + 1}`}</div>
+          <div class="mt-3 h-px w-full bg-line" />
+          <h3 class="mt-5 text-lg font-display font-medium">{step.title}</h3>
+          <p class="mt-2 text-sm text-fg-muted leading-relaxed">{step.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

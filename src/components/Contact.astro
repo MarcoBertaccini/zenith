@@ -1,0 +1,23 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LeadFunnel from './islands/LeadFunnel';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="contatti" class="py-24 md:py-32 border-t border-line/60">
+  <div class="mx-auto max-w-content px-6">
+    <div class="max-w-2xl mb-12">
+      <p class="eyebrow mb-4" data-reveal>{t('contact.eyebrow')}</p>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight" data-reveal>
+        {t('contact.heading')}
+      </h2>
+      <p class="mt-5 text-fg-muted text-lg" data-reveal>{t('contact.sub')}</p>
+    </div>
+
+    <div class="max-w-2xl" data-reveal>
+      <LeadFunnel lang={lang} client:visible />
+    </div>
+  </div>
+</section>

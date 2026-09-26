@@ -1,0 +1,58 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="hero" class="relative pt-40 pb-28 md:pt-48 md:pb-36 overflow-hidden">
+  <div class="mx-auto max-w-content px-6 grid md:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+    <div>
+      <p class="eyebrow mb-6" data-reveal>{t('hero.eyebrow')}</p>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight" data-reveal>
+        {t('hero.headline.pre')}{' '}
+        <span class="text-accent-500">{t('hero.headline.highlight')}</span>{' '}
+        {t('hero.headline.post')}
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg text-fg-muted" data-reveal>
+        {t('hero.sub')}
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4" data-reveal>
+        <a
+          href="#contatti"
+          class="inline-flex items-center rounded-full bg-fg text-ink-950 px-6 py-3 text-sm font-medium hover-lift hover:bg-white"
+        >
+          {t('hero.cta.primary')}
+        </a>
+        <a
+          href="#come-lavoriamo"
+          class="inline-flex items-center rounded-full border border-line px-6 py-3 text-sm text-fg-muted hover-lift hover:text-fg hover:border-accent-500/60"
+        >
+          {t('hero.cta.secondary')}
+        </a>
+      </div>
+    </div>
+
+    <div class="relative hidden md:block" data-reveal aria-hidden="true">
+      <svg viewBox="0 0 360 320" class="w-full h-auto text-line" fill="none">
+        <g stroke="currentColor" stroke-width="1">
+          <line x1="60" y1="60" x2="180" y2="150" />
+          <line x1="300" y1="50" x2="180" y2="150" />
+          <line x1="180" y1="150" x2="90" y2="250" />
+          <line x1="180" y1="150" x2="270" y2="260" />
+          <line x1="90" y1="250" x2="270" y2="260" />
+        </g>
+        <g>
+          <circle cx="60" cy="60" r="6" class="fill-fg-subtle" />
+          <circle cx="300" cy="50" r="6" class="fill-fg-subtle" />
+          <circle cx="180" cy="150" r="9" class="fill-accent-500" />
+          <circle cx="90" cy="250" r="6" class="fill-fg-subtle" />
+          <circle cx="270" cy="260" r="6" class="fill-fg-subtle" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
