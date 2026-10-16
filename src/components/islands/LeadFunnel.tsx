@@ -341,8 +341,8 @@ export default function LeadFunnel({ lang }: Props) {
           {submitError && (
             <p role="alert" className="mt-5 text-sm text-red-400">
               {t('funnel.error.submit')}{' '}
-              <a href="mailto:info@zenith-studio.it" className="underline">
-                info@zenith-studio.it
+              <a href="mailto:marco@zenith-studio.it" className="underline">
+                marco@zenith-studio.it
               </a>
             </p>
           )}
