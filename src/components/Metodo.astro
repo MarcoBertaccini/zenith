@@ -1,0 +1,80 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const steps = [
+  { title: t('metodo.step1.title'), desc: t('metodo.step1.desc') },
+  { title: t('metodo.step2.title'), desc: t('metodo.step2.desc') },
+  { title: t('metodo.step3.title'), desc: t('metodo.step3.desc') },
+  { title: t('metodo.step4.title'), desc: t('metodo.step4.desc') },
+];
+---
+
+<section id="metodo" class="py-32 border-t border-line">
+  <div class="mx-auto max-w-content px-6">
+    <h2 class="text-3xl md:text-4xl font-display font-semibold tracking-tight mb-16" data-reveal>
+      <span class="text-fg-muted">{t('metodo.heading.muted')}</span>{' '}
+      <span class="text-fg">{t('metodo.heading.fg')}</span>
+    </h2>
+
+    <div class="metodo-track">
+      {steps.map((step, i) => (
+        <div class="metodo-item" data-reveal style={`transition-delay:${i * 80}ms`}>
+          <div class="metodo-node-row">
+            <span class="metodo-node"></span>
+            {i < steps.length - 1 && <span class="metodo-connector" aria-hidden="true"></span>}
+          </div>
+          <p class="mt-5 font-mono text-xs text-fg-subtle">{`0${i + 1}`}</p>
+          <h3 class="mt-2 font-display font-medium text-lg">{step.title}</h3>
+          <p class="mt-2 text-sm text-fg-body">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .metodo-track {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .metodo-node-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .metodo-node {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffb547;
+    flex-shrink: 0;
+  }
+
+  .metodo-connector {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .metodo-track {
+      flex-direction: row;
+      gap: 0;
+    }
+
+    .metodo-item {
+      flex: 1;
+    }
+
+    .metodo-connector {
+      display: block;
+      flex: 1;
+      height: 1px;
+      background: rgb(255 255 255 / 0.08);
+      margin-left: 8px;
+    }
+  }
+</style>

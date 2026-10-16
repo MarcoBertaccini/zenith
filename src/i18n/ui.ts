@@ -1,0 +1,353 @@
+export const languages = {
+  it: 'IT',
+  en: 'EN',
+} as const;
+
+export const defaultLang = 'it';
+
+export const ui = {
+  it: {
+    'meta.title': 'Zenith Studio — Sviluppo Web & Automazione dei Processi',
+    'meta.description':
+      'Zenith Studio progetta siti ad alte prestazioni e automazioni su misura per aziende, studi e negozi che vogliono eliminare il lavoro ripetitivo.',
+
+    'nav.lavori': 'Lavori',
+    'nav.sistema': 'Il sistema',
+    'nav.pacchetti': 'Pacchetti',
+    'nav.metodo': 'Metodo',
+    'nav.cta': 'Prenota una call',
+
+    'hero.h1.muted': 'Il tuo sito lavora',
+    'hero.h1.fg': 'anche quando tu dormi.',
+    'hero.lead':
+      'Sito, automazioni e notifiche che trasformano ogni visita in una richiesta — e ogni richiesta in un cliente.',
+    'hero.cta.primary': 'Prenota una chiamata',
+    'hero.cta.secondary': 'Guarda come lavoriamo',
+
+    'hero.cards.groupLabel': 'Esempi di automazioni Zenith in azione',
+    'hero.card1.title': 'Nuova richiesta',
+    'hero.card1.app': 'WhatsApp Business',
+    'hero.card1.time': '2 min fa',
+    'hero.card1.body': 'Nuova prenotazione · Camera Deluxe · 3 notti · 14–17 ott',
+    'hero.card1.badge': 'Confermata',
+
+    'hero.card2.title': 'Automazione attiva',
+    'hero.card2.app': 'n8n',
+    'hero.card2.time': 'In esecuzione',
+    'hero.card2.node1': 'Form',
+    'hero.card2.node2': 'CRM',
+    'hero.card2.node3': 'WhatsApp',
+
+    'hero.card3.title': 'Report mensile',
+    'hero.card3.app': 'Zenith Analytics',
+    'hero.card3.time': 'Ottobre 2026',
+    'hero.card3.stat': 'Richieste dal sito: 47',
+    'hero.card3.delta': '+32% vs mese scorso',
+
+    'lavori.heading.muted': 'Non te lo diciamo.',
+    'lavori.heading.fg': 'Te lo facciamo vedere.',
+    'lavori.sub':
+      'Esempi illustrativi dello stile e della struttura dei siti che realizziamo per attività locali.',
+    'lavori.mockup.badge': 'Mockup illustrativo',
+    'lavori.item1.label': 'Trattoria del Borgo',
+    'lavori.item1.caption': 'Sito & prenotazioni · ristorazione',
+    'lavori.item2.label': 'Bottega Nora',
+    'lavori.item2.caption': 'E-commerce locale · retail',
+    'lavori.item3.label': 'Studio Bellavista',
+    'lavori.item3.caption': 'Booking & recensioni · centro benessere',
+
+    'sistema.heading.muted': 'Il sito è',
+    'sistema.heading.fg': 'solo l’inizio.',
+    'sistema.sub': 'Quattro passaggi, dal primo clic al report che leggi a fine mese.',
+    'sistema.step1.title': 'Il sito',
+    'sistema.step1.desc': 'Una vetrina veloce, chiara, pensata per far agire chi la visita.',
+    'sistema.step2.title': 'La richiesta',
+    'sistema.step2.desc': 'Chi è interessato lascia i suoi dati in pochi secondi, dal telefono.',
+    'sistema.step3.title': 'L’automazione',
+    'sistema.step3.desc': 'La richiesta arriva subito dove lavori già: CRM, email o WhatsApp.',
+    'sistema.step4.title': 'Il report',
+    'sistema.step4.desc': 'Ogni mese vedi quante richieste sono arrivate, senza controllare a mano.',
+    'sistema.site.url': 'iltuosito.it',
+    'sistema.site.headline': 'Prenota il tuo tavolo',
+    'sistema.site.cta': 'Prenota ora',
+
+    'risultati.heading.muted': 'Meno amministrazione.',
+    'risultati.heading.fg': 'Più clienti.',
+    'risultati.item1.title': 'Sempre aperti.',
+    'risultati.item1.desc': 'Il sito raccoglie richieste 24 ore su 24, anche a locale chiuso.',
+    'risultati.item2.title': 'Zero telefonate perse.',
+    'risultati.item2.desc': 'Ogni richiesta arriva via WhatsApp o email, in tempo reale.',
+    'risultati.item3.title': 'Un report al mese.',
+    'risultati.item3.desc': 'Sai sempre quante richieste arrivano dal sito, senza controllare a mano.',
+
+    'pacchetti.heading.muted': 'Scegli il',
+    'pacchetti.heading.fg': 'punto di partenza.',
+    'pacchetti.sub':
+      'Due modi per iniziare. Il pacchetto giusto dipende da quanto lavoro manuale vuoi togliere subito.',
+    'pacchetti.note': 'Prezzo indicativo, da confermare in base al progetto.',
+    'pacchetti.cta': 'Prenota una call',
+
+    'pacchetti.base.name': 'Base',
+    'pacchetti.base.price': 'A partire da €1.500',
+    'pacchetti.base.desc': 'Il sito vetrina che ti serve per essere trovato ed essere contattato.',
+    'pacchetti.base.item1': 'Sito vetrina professionale, fino a 5 pagine',
+    'pacchetti.base.item2': 'Design su misura, ottimizzato per mobile',
+    'pacchetti.base.item3': 'Form di contatto',
+    'pacchetti.base.item4': 'Dominio e hosting inclusi il primo anno',
+    'pacchetti.base.item5': 'Consegna in 3–4 settimane',
+
+    'pacchetti.pro.badge': 'Consigliato',
+    'pacchetti.pro.name': 'Pro',
+    'pacchetti.pro.price': 'A partire da €3.900',
+    'pacchetti.pro.desc': 'Tutto il Base, più le automazioni che tolgono il lavoro manuale.',
+    'pacchetti.pro.item1': 'Tutto il pacchetto Base',
+    'pacchetti.pro.item2': 'Automazioni su misura (form → CRM/WhatsApp via n8n)',
+    'pacchetti.pro.item3': 'Notifiche istantanee per ogni richiesta',
+    'pacchetti.pro.item4': 'Report mensile automatico',
+    'pacchetti.pro.item5': 'Assistenza prioritaria per 12 mesi',
+
+    'metodo.heading.muted': 'Un metodo,',
+    'metodo.heading.fg': 'non un template.',
+    'metodo.step1.title': 'Analisi',
+    'metodo.step1.desc': 'Capiamo dove il tuo team perde più tempo ogni giorno.',
+    'metodo.step2.title': 'Progettazione',
+    'metodo.step2.desc': 'Disegniamo sito e automazioni su misura per il tuo flusso.',
+    'metodo.step3.title': 'Sviluppo',
+    'metodo.step3.desc': 'Costruiamo e testiamo tutto insieme a te, passo dopo passo.',
+    'metodo.step4.title': 'Attivazione',
+    'metodo.step4.desc': 'Andiamo online e restiamo al tuo fianco nel tempo.',
+
+    'contact.heading.muted': 'Iniziamo con',
+    'contact.heading.fg': 'due minuti.',
+    'contact.sub':
+      'Rispondi a qualche domanda veloce: ti diciamo subito dove potresti risparmiare tempo, poi ci mettiamo in contatto per approfondire.',
+
+    'funnel.step.quiz': 'Domande',
+    'funnel.step.result': 'Stima',
+    'funnel.step.details': 'Contatti',
+    'funnel.step.done': 'Fatto',
+
+    'funnel.q.sector.label': 'In che settore operi?',
+    'funnel.q.sector.professional': 'Studio professionale',
+    'funnel.q.sector.retail': 'Negozio / Retail',
+    'funnel.q.sector.b2b': 'Servizi B2B',
+    'funnel.q.sector.other': 'Altro',
+
+    'funnel.q.team.label': 'Quante persone gestiscono attività ripetitive?',
+    'funnel.q.team.s': '1–2 persone',
+    'funnel.q.team.m': '3–5 persone',
+    'funnel.q.team.l': '6–10 persone',
+    'funnel.q.team.xl': 'Più di 10',
+
+    'funnel.q.hours.label': 'Quante ore a settimana passate su attività ripetitive (email, dati, follow-up)?',
+    'funnel.q.hours.s': 'Meno di 5 ore',
+    'funnel.q.hours.m': '5–10 ore',
+    'funnel.q.hours.l': '10–20 ore',
+    'funnel.q.hours.xl': 'Più di 20 ore',
+
+    'funnel.q.tools.label': 'Usate già un CRM o un gestionale?',
+    'funnel.q.tools.yes': 'Sì',
+    'funnel.q.tools.no': 'No, ancora tutto manuale',
+
+    'funnel.cta.next': 'Continua',
+    'funnel.cta.back': 'Indietro',
+    'funnel.cta.seeEstimate': 'Vedi la stima',
+
+    'funnel.result.heading': 'Potresti risparmiare circa',
+    'funnel.result.perYear': 'all’anno',
+    'funnel.result.body': 'Stima basata sulle tue risposte, calcolata su un valore medio del tempo del team. Parliamone per capire come arrivarci davvero.',
+    'funnel.result.cta': 'Voglio saperne di più',
+
+    'funnel.details.name': 'Nome e cognome',
+    'funnel.details.email': 'Email',
+    'funnel.details.company': 'Azienda / Studio',
+    'funnel.details.phone': 'Telefono (facoltativo)',
+    'funnel.details.message': 'Raccontaci qualcosa in più (facoltativo)',
+    'funnel.details.submit': 'Invia richiesta',
+    'funnel.details.submitting': 'Invio in corso…',
+    'funnel.details.privacy': 'Useremo questi dati solo per ricontattarti riguardo alla tua richiesta.',
+
+    'funnel.done.heading': 'Richiesta ricevuta.',
+    'funnel.done.body': 'Grazie! Ti risponderemo entro un giorno lavorativo per approfondire la stima e capire come possiamo aiutarti.',
+
+    'funnel.error.required': 'Campo obbligatorio.',
+    'funnel.error.email': 'Inserisci un’email valida.',
+    'funnel.error.submit': 'Non siamo riusciti a inviare la richiesta. Riprova o scrivici direttamente a',
+
+    'footer.tagline': 'Sistemi che lavorano al posto tuo.',
+    'footer.rights': 'Tutti i diritti riservati.',
+  },
+  en: {
+    'meta.title': 'Zenith Studio — Web Development & Process Automation',
+    'meta.description':
+      'Zenith Studio designs high-performance websites and custom automation for businesses, studios and shops ready to eliminate repetitive work.',
+
+    'nav.lavori': 'Work',
+    'nav.sistema': 'The system',
+    'nav.pacchetti': 'Packages',
+    'nav.metodo': 'Method',
+    'nav.cta': 'Book a call',
+
+    'hero.h1.muted': 'Your website works',
+    'hero.h1.fg': 'even while you sleep.',
+    'hero.lead':
+      'A website, automations and notifications that turn every visit into a request — and every request into a customer.',
+    'hero.cta.primary': 'Book a call',
+    'hero.cta.secondary': 'See how we work',
+
+    'hero.cards.groupLabel': 'Examples of Zenith automations at work',
+    'hero.card1.title': 'New request',
+    'hero.card1.app': 'WhatsApp Business',
+    'hero.card1.time': '2 min ago',
+    'hero.card1.body': 'New booking · Deluxe Room · 3 nights · Oct 14–17',
+    'hero.card1.badge': 'Confirmed',
+
+    'hero.card2.title': 'Automation running',
+    'hero.card2.app': 'n8n',
+    'hero.card2.time': 'Running',
+    'hero.card2.node1': 'Form',
+    'hero.card2.node2': 'CRM',
+    'hero.card2.node3': 'WhatsApp',
+
+    'hero.card3.title': 'Monthly report',
+    'hero.card3.app': 'Zenith Analytics',
+    'hero.card3.time': 'October 2026',
+    'hero.card3.stat': 'Website requests: 47',
+    'hero.card3.delta': '+32% vs last month',
+
+    'lavori.heading.muted': 'We won’t just tell you.',
+    'lavori.heading.fg': 'We’ll show you.',
+    'lavori.sub':
+      'Illustrative examples of the style and structure of the sites we build for local businesses.',
+    'lavori.mockup.badge': 'Illustrative mockup',
+    'lavori.item1.label': 'Trattoria del Borgo',
+    'lavori.item1.caption': 'Website & bookings · restaurant',
+    'lavori.item2.label': 'Bottega Nora',
+    'lavori.item2.caption': 'Local e-commerce · retail',
+    'lavori.item3.label': 'Studio Bellavista',
+    'lavori.item3.caption': 'Booking & reviews · wellness studio',
+
+    'sistema.heading.muted': 'The website is',
+    'sistema.heading.fg': 'just the start.',
+    'sistema.sub': 'Four steps, from the first click to the report you read at month’s end.',
+    'sistema.step1.title': 'The website',
+    'sistema.step1.desc': 'A fast, clear storefront built to make visitors act.',
+    'sistema.step2.title': 'The request',
+    'sistema.step2.desc': 'Interested visitors leave their details in seconds, from their phone.',
+    'sistema.step3.title': 'The automation',
+    'sistema.step3.desc': 'The request lands instantly where you already work: CRM, email or WhatsApp.',
+    'sistema.step4.title': 'The report',
+    'sistema.step4.desc': 'Every month you see how many requests came in, with zero manual checks.',
+    'sistema.site.url': 'yoursite.com',
+    'sistema.site.headline': 'Book your table',
+    'sistema.site.cta': 'Book now',
+
+    'risultati.heading.muted': 'Less admin.',
+    'risultati.heading.fg': 'More customers.',
+    'risultati.item1.title': 'Always open.',
+    'risultati.item1.desc': 'The site collects requests 24/7, even while you’re closed.',
+    'risultati.item2.title': 'No missed calls.',
+    'risultati.item2.desc': 'Every request arrives via WhatsApp or email, in real time.',
+    'risultati.item3.title': 'One report a month.',
+    'risultati.item3.desc': 'Always know how many requests came from the site, with zero manual checks.',
+
+    'pacchetti.heading.muted': 'Choose your',
+    'pacchetti.heading.fg': 'starting point.',
+    'pacchetti.sub':
+      'Two ways to start. The right package depends on how much manual work you want to remove right away.',
+    'pacchetti.note': 'Indicative price, to be confirmed based on the project.',
+    'pacchetti.cta': 'Book a call',
+
+    'pacchetti.base.name': 'Base',
+    'pacchetti.base.price': 'Starting at €1,500',
+    'pacchetti.base.desc': 'The showcase website you need to be found and get contacted.',
+    'pacchetti.base.item1': 'Professional website, up to 5 pages',
+    'pacchetti.base.item2': 'Custom design, optimized for mobile',
+    'pacchetti.base.item3': 'Contact form',
+    'pacchetti.base.item4': 'Domain and hosting included for the first year',
+    'pacchetti.base.item5': 'Delivered in 3–4 weeks',
+
+    'pacchetti.pro.badge': 'Recommended',
+    'pacchetti.pro.name': 'Pro',
+    'pacchetti.pro.price': 'Starting at €3,900',
+    'pacchetti.pro.desc': 'Everything in Base, plus the automations that remove manual work.',
+    'pacchetti.pro.item1': 'Everything in Base',
+    'pacchetti.pro.item2': 'Custom automations (form → CRM/WhatsApp via n8n)',
+    'pacchetti.pro.item3': 'Instant notifications for every request',
+    'pacchetti.pro.item4': 'Automated monthly report',
+    'pacchetti.pro.item5': 'Priority support for 12 months',
+
+    'metodo.heading.muted': 'A method,',
+    'metodo.heading.fg': 'not a template.',
+    'metodo.step1.title': 'Analysis',
+    'metodo.step1.desc': 'We find out where your team loses the most time every day.',
+    'metodo.step2.title': 'Design',
+    'metodo.step2.desc': 'We design a website and automations tailored to your workflow.',
+    'metodo.step3.title': 'Development',
+    'metodo.step3.desc': 'We build and test everything together with you, step by step.',
+    'metodo.step4.title': 'Launch',
+    'metodo.step4.desc': 'We go live and stay by your side over time.',
+
+    'contact.heading.muted': 'Let’s start with',
+    'contact.heading.fg': 'two minutes.',
+    'contact.sub':
+      'Answer a few quick questions: we’ll show you right away where you could save time, then we’ll get in touch to go deeper.',
+
+    'funnel.step.quiz': 'Questions',
+    'funnel.step.result': 'Estimate',
+    'funnel.step.details': 'Contact',
+    'funnel.step.done': 'Done',
+
+    'funnel.q.sector.label': 'What industry are you in?',
+    'funnel.q.sector.professional': 'Professional studio',
+    'funnel.q.sector.retail': 'Shop / Retail',
+    'funnel.q.sector.b2b': 'B2B services',
+    'funnel.q.sector.other': 'Other',
+
+    'funnel.q.team.label': 'How many people handle repetitive tasks?',
+    'funnel.q.team.s': '1–2 people',
+    'funnel.q.team.m': '3–5 people',
+    'funnel.q.team.l': '6–10 people',
+    'funnel.q.team.xl': 'More than 10',
+
+    'funnel.q.hours.label': 'How many hours a week go into repetitive tasks (email, data, follow-ups)?',
+    'funnel.q.hours.s': 'Less than 5 hours',
+    'funnel.q.hours.m': '5–10 hours',
+    'funnel.q.hours.l': '10–20 hours',
+    'funnel.q.hours.xl': 'More than 20 hours',
+
+    'funnel.q.tools.label': 'Do you already use a CRM or management tool?',
+    'funnel.q.tools.yes': 'Yes',
+    'funnel.q.tools.no': 'No, still all manual',
+
+    'funnel.cta.next': 'Continue',
+    'funnel.cta.back': 'Back',
+    'funnel.cta.seeEstimate': 'See the estimate',
+
+    'funnel.result.heading': 'You could save about',
+    'funnel.result.perYear': 'per year',
+    'funnel.result.body': 'Estimate based on your answers, calculated on an average value of your team’s time. Let’s talk about how to actually get there.',
+    'funnel.result.cta': 'I want to know more',
+
+    'funnel.details.name': 'Full name',
+    'funnel.details.email': 'Email',
+    'funnel.details.company': 'Company / Studio',
+    'funnel.details.phone': 'Phone (optional)',
+    'funnel.details.message': 'Tell us a bit more (optional)',
+    'funnel.details.submit': 'Send request',
+    'funnel.details.submitting': 'Sending…',
+    'funnel.details.privacy': 'We’ll only use this data to get back to you about your request.',
+
+    'funnel.done.heading': 'Request received.',
+    'funnel.done.body': 'Thanks! We’ll get back to you within one business day to go deeper on the estimate and how we can help.',
+
+    'funnel.error.required': 'This field is required.',
+    'funnel.error.email': 'Enter a valid email address.',
+    'funnel.error.submit': 'We couldn’t send your request. Try again or email us directly at',
+
+    'footer.tagline': 'Systems that work for you.',
+    'footer.rights': 'All rights reserved.',
+  },
+} as const;
+
+export type UiKey = keyof (typeof ui)['it'];
