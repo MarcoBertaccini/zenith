@@ -6,13 +6,11 @@ const t = useTranslations(lang);
 ---
 
 <section id="hero" class="zenith-hero relative overflow-x-clip">
+  <canvas class="hero-network" aria-hidden="true"></canvas>
+
   <div
     class="relative mx-auto max-w-[1200px] px-6 md:px-8 pt-24 pb-24 md:pt-40 md:pb-40 flex flex-col items-center text-center"
   >
-    <div class="hero-orb-wrap" aria-hidden="true">
-      <div class="hero-orb"></div>
-    </div>
-
     <h1 class="hero-h1 relative z-10">
       <span class="hero-fg-muted">{t('hero.h1.muted')}</span>{' '}
       <span class="hero-fg">{t('hero.h1.fg')}</span>
@@ -100,38 +98,12 @@ const t = useTranslations(lang);
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  .hero-orb-wrap {
-    position: relative;
-    width: min(640px, 90vw);
-    height: 180px;
+  .hero-network {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     pointer-events: none;
-  }
-
-  .hero-orb {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 50% 42%, var(--zh-accent-soft) 0%, var(--zh-accent) 28%, rgb(255 181 71 / 0.35) 52%, transparent 72%);
-    filter: blur(2px);
-    animation: hero-breathe 6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-  }
-
-  .hero-orb::after {
-    content: '';
-    position: absolute;
-    inset: -60px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--zh-accent-glow) 0%, transparent 70%);
-  }
-
-  @keyframes hero-breathe {
-    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.92; }
-    50% { transform: translateX(-50%) scale(1.05); opacity: 1; }
+    display: block;
   }
 
   .hero-h1 {
@@ -406,10 +378,6 @@ const t = useTranslations(lang);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-orb {
-      animation: none;
-    }
-
     .hero-card {
       animation: none;
       opacity: 1;
@@ -428,3 +396,124 @@ const t = useTranslations(lang);
     }
   }
 </style>
+
+<script>
+  interface Node {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    r: number;
+  }
+
+  const canvas = document.querySelector('.hero-network') as HTMLCanvasElement | null;
+  const section = document.getElementById('hero');
+  const ctx = canvas?.getContext('2d') ?? null;
+
+  if (canvas && section && ctx) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    let width = 0;
+    let height = 0;
+    let nodes: Node[] = [];
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let mouseActive = false;
+
+    const LINK_DIST = 150;
+    const CURSOR_RADIUS = 170;
+
+    function initNodes() {
+      const count = width < 768 ? 28 : 55;
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
+        r: 1.2 + Math.random() * 1.2,
+      }));
+    }
+
+    function resize() {
+      const rect = section!.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas!.width = width * dpr;
+      canvas!.height = height * dpr;
+      canvas!.style.width = `${width}px`;
+      canvas!.style.height = `${height}px`;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      initNodes();
+    }
+
+    function draw() {
+      ctx!.clearRect(0, 0, width, height);
+
+      if (!reduceMotion) {
+        for (const n of nodes) {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > width) n.vx *= -1;
+          if (n.y < 0 || n.y > height) n.vy *= -1;
+        }
+      }
+
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i];
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            const base = 0.08 * (1 - dist / LINK_DIST);
+            let boost = 0;
+            if (mouseActive) {
+              const near = Math.min(Math.hypot(a.x - mouseX, a.y - mouseY), Math.hypot(b.x - mouseX, b.y - mouseY));
+              if (near < CURSOR_RADIUS) boost = (1 - near / CURSOR_RADIUS) * 0.35;
+            }
+            ctx!.strokeStyle = `rgba(255, 181, 71, ${Math.min(base + boost, 0.5)})`;
+            ctx!.lineWidth = 1;
+            ctx!.beginPath();
+            ctx!.moveTo(a.x, a.y);
+            ctx!.lineTo(b.x, b.y);
+            ctx!.stroke();
+          }
+        }
+      }
+
+      for (const n of nodes) {
+        let opacity = 0.35;
+        let radius = n.r;
+        if (mouseActive) {
+          const d = Math.hypot(n.x - mouseX, n.y - mouseY);
+          if (d < CURSOR_RADIUS) {
+            const t = 1 - d / CURSOR_RADIUS;
+            opacity = 0.35 + t * 0.55;
+            radius = n.r + t * 1.5;
+          }
+        }
+        ctx!.fillStyle = `rgba(255, 181, 71, ${opacity})`;
+        ctx!.beginPath();
+        ctx!.arc(n.x, n.y, radius, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    section.addEventListener('mousemove', (e) => {
+      const rect = section.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+      mouseActive = true;
+    });
+    section.addEventListener('mouseleave', () => {
+      mouseActive = false;
+    });
+    requestAnimationFrame(draw);
+  }
+</script>
