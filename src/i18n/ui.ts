@@ -119,6 +119,11 @@ export const ui = {
     'contact.sub':
       'Rispondi a qualche domanda veloce: ti diciamo subito dove potresti risparmiare tempo, poi ci mettiamo in contatto per approfondire.',
 
+    'contact.alt.eyebrow': 'Preferisci parlare subito?',
+    'contact.alt.sub': 'Scrivici su WhatsApp o chiamaci direttamente, senza compilare nulla.',
+    'contact.alt.whatsapp': 'Scrivici su WhatsApp',
+    'contact.alt.call': 'Chiama ora',
+
     'funnel.step.quiz': 'Domande',
     'funnel.step.result': 'Stima',
     'funnel.step.details': 'Contatti',
@@ -286,6 +291,11 @@ export const ui = {
     'contact.heading.fg': 'two minutes.',
     'contact.sub':
       'Answer a few quick questions: we’ll show you right away where you could save time, then we’ll get in touch to go deeper.',
+
+    'contact.alt.eyebrow': 'Prefer to talk right away?',
+    'contact.alt.sub': 'Message us on WhatsApp or call us directly, no form needed.',
+    'contact.alt.whatsapp': 'Message us on WhatsApp',
+    'contact.alt.call': 'Call now',
 
     'funnel.step.quiz': 'Questions',
     'funnel.step.result': 'Estimate',
