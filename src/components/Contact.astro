@@ -4,6 +4,8 @@ import LeadFunnel from './islands/LeadFunnel';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const whatsappHref = `https://wa.me/393793820699?text=${encodeURIComponent(t('contact.alt.whatsappMessage'))}`;
 ---
 
 <section id="contatti" class="py-32 border-t border-line">
@@ -20,7 +22,7 @@ const t = useTranslations(lang);
         <p class="text-sm text-fg-body mb-4">{t('contact.alt.sub')}</p>
         <div class="flex flex-wrap gap-3">
           <a
-            href="https://wa.me/393793820699?text=Ciao%21%20Ho%20visto%20il%20sito%20e%20vorrei%20qualche%20informazione."
+            href={whatsappHref}
             target="_blank"
             rel="noopener"
             class="btn-secondary"

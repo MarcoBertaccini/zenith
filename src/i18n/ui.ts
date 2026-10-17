@@ -122,6 +122,7 @@ export const ui = {
     'contact.alt.eyebrow': 'Preferisci parlare subito?',
     'contact.alt.sub': 'Scrivici su WhatsApp o chiamaci direttamente, senza compilare nulla.',
     'contact.alt.whatsapp': 'Scrivici su WhatsApp',
+    'contact.alt.whatsappMessage': 'Ciao! Ho visto il sito e vorrei qualche informazione.',
     'contact.alt.call': 'Chiama ora',
 
     'funnel.step.quiz': 'Domande',
@@ -295,6 +296,7 @@ export const ui = {
     'contact.alt.eyebrow': 'Prefer to talk right away?',
     'contact.alt.sub': 'Message us on WhatsApp or call us directly, no form needed.',
     'contact.alt.whatsapp': 'Message us on WhatsApp',
+    'contact.alt.whatsappMessage': 'Hi! I saw your website and I’d like some information.',
     'contact.alt.call': 'Call now',
 
     'funnel.step.quiz': 'Questions',
