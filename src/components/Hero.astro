@@ -171,7 +171,7 @@ const t = useTranslations(lang);
     border-color: var(--zh-accent);
   }
 
-  /* Product cards: mobile/tablet = horizontal snap carousel, desktop (lg+) = floating, breaking the container edges */
+  /* Product cards: mobile/tablet/small-desktop = horizontal snap carousel, wide desktop (1280px+) = floating, breaking the container edges */
   .hero-cards-viewport {
     width: 100%;
     overflow-x: auto;
@@ -355,7 +355,7 @@ const t = useTranslations(lang);
     color: var(--zh-success);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     .hero-cards-viewport {
       position: absolute;
       inset: 0;
@@ -372,7 +372,7 @@ const t = useTranslations(lang);
       pointer-events: auto;
     }
 
-    .hero-card-1 { top: 44px; left: -40px; }
+    .hero-card-1 { top: 84px; left: -100px; }
     .hero-card-2 { top: 528px; right: -60px; }
     .hero-card-3 { bottom: 44px; left: -64px; }
   }

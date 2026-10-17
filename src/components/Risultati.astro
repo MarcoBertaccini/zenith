@@ -11,7 +11,7 @@ const items = [
 ];
 ---
 
-<section id="risultati" class="py-24 bg-paper text-paper-ink">
+<section id="risultati" class="risultati-section py-24 text-paper-ink">
   <div class="mx-auto max-w-content px-6">
     <h2 class="text-2xl md:text-3xl font-display font-semibold tracking-tight mb-16 max-w-xl" data-reveal>
       <span class="text-paper-ink/50">{t('risultati.heading.muted')}</span>{' '}
@@ -32,3 +32,10 @@ const items = [
     </div>
   </div>
 </section>
+
+<style>
+  /* Soften the hard cut from the dark section above instead of a flat flip to the light background */
+  .risultati-section {
+    background: linear-gradient(180deg, #08080a 0%, #f5f5f4 96px, #f5f5f4 100%);
+  }
+</style>
