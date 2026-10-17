@@ -83,12 +83,10 @@ export const ui = {
     'pacchetti.heading.muted': 'Scegli il',
     'pacchetti.heading.fg': 'punto di partenza.',
     'pacchetti.sub':
-      'Due modi per iniziare. Il pacchetto giusto dipende da quanto lavoro manuale vuoi togliere subito.',
-    'pacchetti.note': 'Prezzo indicativo, da confermare in base al progetto.',
-    'pacchetti.cta': 'Prenota una call',
+      'Due modi per iniziare. Ogni progetto è su misura: il preventivo arriva dopo una chiamata, non prima.',
+    'pacchetti.cta': 'Richiedi un preventivo',
 
     'pacchetti.base.name': 'Base',
-    'pacchetti.base.price': 'A partire da €1.500',
     'pacchetti.base.desc': 'Il sito vetrina che ti serve per essere trovato ed essere contattato.',
     'pacchetti.base.item1': 'Sito vetrina professionale, fino a 5 pagine',
     'pacchetti.base.item2': 'Design su misura, ottimizzato per mobile',
@@ -98,7 +96,6 @@ export const ui = {
 
     'pacchetti.pro.badge': 'Consigliato',
     'pacchetti.pro.name': 'Pro',
-    'pacchetti.pro.price': 'A partire da €3.900',
     'pacchetti.pro.desc': 'Tutto il Base, più le automazioni che tolgono il lavoro manuale.',
     'pacchetti.pro.item1': 'Tutto il pacchetto Base',
     'pacchetti.pro.item2': 'Automazioni su misura (form → CRM/WhatsApp via n8n)',
@@ -254,12 +251,10 @@ export const ui = {
     'pacchetti.heading.muted': 'Choose your',
     'pacchetti.heading.fg': 'starting point.',
     'pacchetti.sub':
-      'Two ways to start. The right package depends on how much manual work you want to remove right away.',
-    'pacchetti.note': 'Indicative price, to be confirmed based on the project.',
-    'pacchetti.cta': 'Book a call',
+      'Two ways to start. Every project is custom: the quote comes after a call, not before.',
+    'pacchetti.cta': 'Request a quote',
 
     'pacchetti.base.name': 'Base',
-    'pacchetti.base.price': 'Starting at €1,500',
     'pacchetti.base.desc': 'The showcase website you need to be found and get contacted.',
     'pacchetti.base.item1': 'Professional website, up to 5 pages',
     'pacchetti.base.item2': 'Custom design, optimized for mobile',
@@ -269,7 +264,6 @@ export const ui = {
 
     'pacchetti.pro.badge': 'Recommended',
     'pacchetti.pro.name': 'Pro',
-    'pacchetti.pro.price': 'Starting at €3,900',
     'pacchetti.pro.desc': 'Everything in Base, plus the automations that remove manual work.',
     'pacchetti.pro.item1': 'Everything in Base',
     'pacchetti.pro.item2': 'Custom automations (form → CRM/WhatsApp via n8n)',
