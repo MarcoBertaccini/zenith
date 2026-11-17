@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 
 const canonicalPath = getLocalizedPath(lang, path);
 const canonicalURL = new URL(canonicalPath, Astro.site);
-const ogImageURL = new URL('/preview-zenith.svg', Astro.site);
+const ogImageURL = new URL('/og-zenith.png', Astro.site);
 ---
 
 <!doctype html>
@@ -23,6 +23,7 @@ const ogImageURL = new URL('/preview-zenith.svg', Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" hreflang="it" href={new URL('/', Astro.site)} />
     <link rel="alternate" hreflang="en" href={new URL('/en/', Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="theme-color" content="#08080A" />
@@ -30,6 +31,8 @@ const ogImageURL = new URL('/preview-zenith.svg', Astro.site);
 
     <title>{t('meta.title')}</title>
     <meta name="description" content={t('meta.description')} />
+    <meta name="geo.region" content="IT-FC" />
+    <meta name="geo.placename" content="Forlì" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,13 +47,54 @@ const ogImageURL = new URL('/preview-zenith.svg', Astro.site);
 
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Organization',
-      url: 'https://zenith-studio.it',
-      name: 'Zenith Studio',
-      logo: 'https://zenith-studio.it/favicon.svg',
-      sameAs: [
-        'https://www.instagram.com/zenith.studio',
-        'https://www.linkedin.com/company/zenith-studio',
+      '@graph': [
+        {
+          '@type': 'ProfessionalService',
+          '@id': 'https://zenith-studio.it/#business',
+          name: 'Zenith Studio',
+          url: 'https://zenith-studio.it',
+          logo: 'https://zenith-studio.it/favicon.png',
+          image: 'https://zenith-studio.it/og-zenith.png',
+          description: t('meta.description'),
+          email: 'marco@zenith-studio.it',
+          telephone: '+39 379 382 0699',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Forlì',
+            addressRegion: 'FC',
+            addressCountry: 'IT',
+          },
+          areaServed: [
+            { '@type': 'City', name: 'Forlì' },
+            { '@type': 'City', name: 'Cesena' },
+            { '@type': 'City', name: 'Ravenna' },
+            { '@type': 'City', name: 'Rimini' },
+            { '@type': 'AdministrativeArea', name: 'Emilia-Romagna' },
+            { '@type': 'Country', name: 'Italia' },
+          ],
+          knowsAbout: [
+            'Web design',
+            'Sviluppo siti web',
+            'Landing page',
+            'SEO',
+            'Automazione dei processi',
+            'n8n',
+            'WhatsApp Business',
+            'CRM',
+          ],
+          sameAs: [
+            'https://www.instagram.com/zenith.studio',
+            'https://www.linkedin.com/company/zenith-studio',
+          ],
+        },
+        {
+          '@type': 'WebSite',
+          '@id': 'https://zenith-studio.it/#website',
+          url: 'https://zenith-studio.it',
+          name: 'Zenith Studio',
+          inLanguage: ['it', 'en'],
+          publisher: { '@id': 'https://zenith-studio.it/#business' },
+        },
       ],
     })} />
 
@@ -59,6 +103,10 @@ const ogImageURL = new URL('/preview-zenith.svg', Astro.site);
     <meta property="og:title" content={t('meta.title')} />
     <meta property="og:description" content={t('meta.description')} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={t('meta.title')} />
+    <meta property="og:site_name" content="Zenith Studio" />
     <meta property="og:locale" content={lang === 'it' ? 'it_IT' : 'en_US'} />
     <meta property="og:locale:alternate" content={lang === 'it' ? 'en_US' : 'it_IT'} />
 

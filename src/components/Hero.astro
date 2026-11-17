@@ -12,6 +12,7 @@ const t = useTranslations(lang);
     class="relative mx-auto max-w-[1200px] px-6 md:px-8 pt-24 pb-24 md:pt-40 md:pb-40 flex flex-col items-center text-center"
   >
     <h1 class="hero-h1 relative z-10">
+      <span class="hero-eyebrow">{t('hero.eyebrow')}</span>
       <span class="hero-fg-muted">{t('hero.h1.muted')}</span>{' '}
       <span class="hero-fg">{t('hero.h1.fg')}</span>
     </h1>
@@ -114,6 +115,18 @@ const t = useTranslations(lang);
     font-size: clamp(2.75rem, 1.5rem + 5.5vw, 5.5rem);
     max-width: 16ch;
     color: var(--zh-fg);
+  }
+
+  .hero-eyebrow {
+    display: block;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--zh-accent);
   }
 
   .hero-fg-muted {

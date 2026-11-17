@@ -7,9 +7,9 @@ export const defaultLang = 'it';
 
 export const ui = {
   it: {
-    'meta.title': 'Zenith Studio — Sviluppo Web & Automazione dei Processi',
+    'meta.title': 'Siti Web e Automazioni a Forlì | Zenith Studio',
     'meta.description':
-      'Zenith Studio progetta siti ad alte prestazioni e automazioni su misura per aziende, studi e negozi che vogliono eliminare il lavoro ripetitivo.',
+      'Web agency a Forlì: siti web veloci, landing page e automazioni su misura (WhatsApp, CRM, n8n) per aziende, studi e negozi in Romagna e in tutta Italia.',
 
     'nav.lavori': 'Lavori',
     'nav.sistema': 'Il sistema',
@@ -17,6 +17,7 @@ export const ui = {
     'nav.metodo': 'Metodo',
     'nav.cta': 'Prenotate una call',
 
+    'hero.eyebrow': 'Siti web e automazioni a Forlì',
     'hero.h1.muted': 'Il vostro sito lavora',
     'hero.h1.fg': 'anche quando voi dormite.',
     'hero.lead':
@@ -177,13 +178,29 @@ export const ui = {
     'funnel.error.email': 'Inserisci un’email valida.',
     'funnel.error.submit': 'Non siamo riusciti a inviare la richiesta. Riprovate o scriveteci direttamente a',
 
+    'faq.heading.muted': 'Domande',
+    'faq.heading.fg': 'frequenti.',
+    'faq.q1': 'Quanto costa un sito web a Forlì?',
+    'faq.a1': 'Dipende da quante pagine servono e se volete anche le automazioni. Ogni progetto è su misura: dopo una chiamata conoscitiva gratuita vi mandiamo un preventivo chiaro, senza costi nascosti.',
+    'faq.q2': 'Quanto tempo serve per realizzare un sito?',
+    'faq.a2': 'Un sito vetrina fino a 5 pagine è online in 3–4 settimane. Con le automazioni (WhatsApp, CRM, report) i tempi dipendono dal progetto: ve li diciamo già nel preventivo.',
+    'faq.q3': 'Lavorate solo a Forlì?',
+    'faq.a3': 'Siamo a Forlì e lavoriamo con aziende di tutta la Romagna (Cesena, Ravenna, Rimini) e del resto d\'Italia. Gran parte del lavoro si fa da remoto, con call e aggiornamenti costanti.',
+    'faq.q4': 'Cosa sono le automazioni e a cosa servono?',
+    'faq.a4': 'Sono flussi che fanno al posto vostro il lavoro ripetitivo: ogni richiesta dal sito vi arriva subito su WhatsApp o email, finisce nel CRM e ricevete un report mensile. Le costruiamo con n8n, su misura per il vostro modo di lavorare.',
+    'faq.q5': 'Il sito sarà veloce, ottimizzato per mobile e per Google?',
+    'faq.a5': 'Sì. Ogni sito è progettato prima per il telefono, è leggero e veloce e nasce con le basi SEO già fatte: titoli, descrizioni, dati strutturati e sitemap.',
+    'faq.q6': 'Dominio e hosting sono inclusi?',
+    'faq.a6': 'Sì, dominio e hosting sono inclusi per il primo anno. Poi potete rinnovarli con noi o gestirli in autonomia: il sito resta vostro.',
+
     'footer.tagline': 'Sistemi che lavorano al posto vostro.',
+    'footer.location': 'Forlì (FC), Emilia-Romagna',
     'footer.rights': 'Tutti i diritti riservati.',
   },
   en: {
-    'meta.title': 'Zenith Studio — Web Development & Process Automation',
+    'meta.title': 'Websites & Automation in Forlì, Italy | Zenith Studio',
     'meta.description':
-      'Zenith Studio designs high-performance websites and custom automation for businesses, studios and shops ready to eliminate repetitive work.',
+      'Web studio based in Forlì, Italy: fast websites, landing pages and custom automation (WhatsApp, CRM, n8n) for businesses, studios and shops across Italy.',
 
     'nav.lavori': 'Work',
     'nav.sistema': 'The system',
@@ -191,6 +208,7 @@ export const ui = {
     'nav.metodo': 'Method',
     'nav.cta': 'Book a call',
 
+    'hero.eyebrow': 'Websites & automation in Forlì, Italy',
     'hero.h1.muted': 'Your website works',
     'hero.h1.fg': 'even while you sleep.',
     'hero.lead':
@@ -351,7 +369,23 @@ export const ui = {
     'funnel.error.email': 'Enter a valid email address.',
     'funnel.error.submit': 'We couldn’t send your request. Try again or email us directly at',
 
+    'faq.heading.muted': 'Frequently asked',
+    'faq.heading.fg': 'questions.',
+    'faq.q1': 'How much does a website cost?',
+    'faq.a1': 'It depends on how many pages you need and whether you want automation too. Every project is custom: after a free intro call we send you a clear quote with no hidden costs.',
+    'faq.q2': 'How long does it take to build a website?',
+    'faq.a2': 'A showcase website of up to 5 pages goes live in 3–4 weeks. With automation (WhatsApp, CRM, reports) timing depends on the project: we tell you upfront in the quote.',
+    'faq.q3': 'Do you only work in Forlì?',
+    'faq.a3': 'We are based in Forlì, Italy, and work with businesses across Romagna (Cesena, Ravenna, Rimini), the rest of Italy and abroad. Most of the work is done remotely, with calls and regular updates.',
+    'faq.q4': 'What is automation and what is it for?',
+    'faq.a4': 'Automations are workflows that do repetitive work for you: every request from your website reaches you instantly on WhatsApp or email, lands in your CRM, and you get a monthly report. We build them with n8n, tailored to the way you work.',
+    'faq.q5': 'Will my website be fast, mobile-friendly and optimized for Google?',
+    'faq.a5': 'Yes. Every site is designed mobile-first, is lightweight and fast, and ships with SEO basics built in: titles, descriptions, structured data and sitemap.',
+    'faq.q6': 'Are domain and hosting included?',
+    'faq.a6': 'Yes, domain and hosting are included for the first year. After that you can renew with us or manage them yourself: the website stays yours.',
+
     'footer.tagline': 'Systems that work for you.',
+    'footer.location': 'Forlì (FC), Emilia-Romagna, Italy',
     'footer.rights': 'All rights reserved.',
   },
 } as const;

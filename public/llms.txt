@@ -1,0 +1,35 @@
+# Zenith Studio
+
+> Zenith Studio è uno studio di sviluppo web e automazione dei processi con base a Forlì (FC), Emilia-Romagna, Italia. Realizza siti web veloci, landing page e automazioni su misura (n8n, WhatsApp Business, CRM) per piccole e medie imprese, studi professionali e negozi in Romagna e in tutta Italia.
+
+## Servizi
+
+- Siti vetrina professionali (fino a 5 pagine), design su misura, mobile-first, SEO di base incluso. Consegna in 3–4 settimane.
+- Landing page per campagne e generazione contatti.
+- Automazioni dei processi con n8n: ogni richiesta dal sito arriva in tempo reale su WhatsApp o email e viene salvata nel CRM.
+- Report mensili automatici su visite e richieste.
+- Dominio e hosting inclusi il primo anno.
+
+## Pacchetti
+
+- Base: sito vetrina professionale, form di contatto, dominio e hosting per il primo anno.
+- Pro: tutto il Base più automazioni su misura, notifiche istantanee, report mensile, assistenza prioritaria per 12 mesi.
+- Prezzi: su preventivo, dopo una chiamata conoscitiva gratuita.
+
+## Zona servita
+
+Forlì, Cesena, Ravenna, Rimini, Emilia-Romagna e tutta Italia (lavoro da remoto).
+
+## Lavori
+
+- [B&B La Villa](https://www.bblavilla.com)
+- [RELAB Center](https://relab-center.it)
+- [Crinali Running Club](https://www.crinalirunning.it)
+- [Asfalti Mirko](https://asfaltimirko.it)
+
+## Contatti
+
+- Sito: https://zenith-studio.it
+- Versione inglese: https://zenith-studio.it/en/
+- Email: marco@zenith-studio.it
+- Telefono / WhatsApp: +39 379 382 0699
