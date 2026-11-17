@@ -20,12 +20,18 @@
 
 Forlì, Cesena, Ravenna, Rimini, Emilia-Romagna e tutta Italia (lavoro da remoto).
 
+## Pagine servizi
+
+- [Realizzazione siti web a Forlì](https://zenith-studio.it/servizi/siti-web-forli/)
+- [Automazione dei processi con n8n](https://zenith-studio.it/servizi/automazioni-n8n/)
+- [Landing page](https://zenith-studio.it/servizi/landing-page/)
+
 ## Lavori
 
-- [B&B La Villa](https://www.bblavilla.com)
-- [RELAB Center](https://relab-center.it)
-- [Crinali Running Club](https://www.crinalirunning.it)
-- [Asfalti Mirko](https://asfaltimirko.it)
+- [B&B La Villa](https://zenith-studio.it/lavori/bb-la-villa/): sito e prenotazioni per bed & breakfast
+- [RELAB Center](https://zenith-studio.it/lavori/relab-center/): sito e prenotazioni per centro di fisioterapia
+- [Crinali Running Club](https://zenith-studio.it/lavori/crinali-running-club/): community ed eventi di trail running
+- [Asfalti Mirko](https://zenith-studio.it/lavori/asfalti-mirko/): sito aziendale, impermeabilizzazioni e isolanti
 
 ## Contatti
 

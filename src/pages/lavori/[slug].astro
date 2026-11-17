@@ -1,0 +1,12 @@
+---
+import WorkPage from '../../components/pages/WorkPage.astro';
+import { works } from '../../data/works';
+
+export function getStaticPaths() {
+  return works.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props;
+---
+
+<WorkPage work={item} lang="it" />

@@ -4,20 +4,27 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+interface Props {
+  altHref?: string;
+}
+
 const otherLang = lang === 'it' ? 'en' : 'it';
-const otherHref = lang === 'it' ? '/en/' : '/';
+const home = lang === 'it' ? '/' : '/en/';
+const otherHref = Astro.props.altHref ?? (lang === 'it' ? '/en/' : '/');
+const isHome = Astro.url.pathname === home;
+const anchor = (id: string) => (isHome ? `#${id}` : `${home}#${id}`);
 
 const links = [
-  { href: '#lavori', label: t('nav.lavori') },
-  { href: '#il-sistema', label: t('nav.sistema') },
-  { href: '#pacchetti', label: t('nav.pacchetti') },
-  { href: '#metodo', label: t('nav.metodo') },
+  { href: anchor('lavori'), label: t('nav.lavori') },
+  { href: anchor('il-sistema'), label: t('nav.sistema') },
+  { href: anchor('pacchetti'), label: t('nav.pacchetti') },
+  { href: anchor('metodo'), label: t('nav.metodo') },
 ];
 ---
 
 <header class="fixed top-0 inset-x-0 z-50 border-b border-line/60 bg-ink-950/80 backdrop-blur-md">
   <div class="mx-auto max-w-content px-6 h-16 flex items-center justify-between">
-    <a href={lang === 'it' ? '/' : '/en/'} class="font-display font-semibold text-lg tracking-tight text-fg">
+    <a href={home} class="font-display font-semibold text-lg tracking-tight text-fg">
       ZENITH<span class="text-accent-500">.</span>
     </a>
 
@@ -41,7 +48,7 @@ const links = [
         {otherLang.toUpperCase()}
       </a>
       <a
-        href="#contatti"
+        href={anchor('contatti')}
         class="hidden sm:inline-flex items-center rounded-xl border border-line px-4 py-2 text-sm text-fg hover-lift hover:border-accent-500"
       >
         {t('nav.cta')}
@@ -67,7 +74,7 @@ const links = [
         {link.label}
       </a>
     ))}
-    <a href="#contatti" class="text-sm text-accent-400">{t('nav.cta')}</a>
+    <a href={anchor('contatti')} class="text-sm text-accent-400">{t('nav.cta')}</a>
   </nav>
 </header>
 

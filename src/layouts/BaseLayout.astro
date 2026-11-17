@@ -4,13 +4,20 @@ import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils
 
 interface Props {
   path?: string;
+  title?: string;
+  description?: string;
+  alternates?: { it: string; en: string };
+  schema?: Record<string, unknown>[];
 }
 
-const { path = '/' } = Astro.props;
+const { path = '/', title, description, alternates, schema = [] } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const canonicalPath = getLocalizedPath(lang, path);
+const pageTitle = title ?? t('meta.title');
+const pageDescription = description ?? t('meta.description');
+const alt = alternates ?? { it: path, en: getLocalizedPath('en', path) };
+const canonicalPath = alternates ? alternates[lang] : getLocalizedPath(lang, path);
 const canonicalURL = new URL(canonicalPath, Astro.site);
 const ogImageURL = new URL('/og-zenith.png', Astro.site);
 ---
@@ -21,16 +28,16 @@ const ogImageURL = new URL('/og-zenith.png', Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" hreflang="it" href={new URL('/', Astro.site)} />
-    <link rel="alternate" hreflang="en" href={new URL('/en/', Astro.site)} />
-    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+    <link rel="alternate" hreflang="it" href={new URL(alt.it, Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(alt.en, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(alt.it, Astro.site)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="theme-color" content="#08080A" />
     <meta name="google-site-verification" content="oiPD74a8yxFoE5KkjM85GIss2rWc1hCcA92pY796vH8" />
 
-    <title>{t('meta.title')}</title>
-    <meta name="description" content={t('meta.description')} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
     <meta name="geo.region" content="IT-FC" />
     <meta name="geo.placename" content="Forlì" />
 
@@ -98,21 +105,25 @@ const ogImageURL = new URL('/og-zenith.png', Astro.site);
       ],
     })} />
 
+    {schema.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={t('meta.title')} />
-    <meta property="og:description" content={t('meta.description')} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={t('meta.title')} />
+    <meta property="og:image:alt" content={pageTitle} />
     <meta property="og:site_name" content="Zenith Studio" />
     <meta property="og:locale" content={lang === 'it' ? 'it_IT' : 'en_US'} />
     <meta property="og:locale:alternate" content={lang === 'it' ? 'en_US' : 'it_IT'} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={t('meta.title')} />
-    <meta name="twitter:description" content={t('meta.description')} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={ogImageURL} />
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2PY9LR1ZP"></script>

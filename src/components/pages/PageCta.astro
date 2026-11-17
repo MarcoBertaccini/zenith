@@ -1,0 +1,23 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const home = lang === 'it' ? '/' : '/en/';
+const whatsappHref = `https://wa.me/393793820699?text=${encodeURIComponent(t('contact.alt.whatsappMessage'))}`;
+---
+
+<section class="py-24 border-t border-line">
+  <div class="mx-auto max-w-content px-6">
+    <div class="hairline rounded-card p-8 md:p-12 bg-ink-900" data-reveal>
+      <h2 class="text-3xl md:text-4xl font-display font-semibold tracking-tight max-w-[20ch]">{t('page.cta.title')}</h2>
+      <p class="mt-4 text-fg-body text-lg max-w-[55ch]">{t('page.cta.sub')}</p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a href={`${home}#contatti`} class="btn-primary">
+          {t('page.cta.primary')} <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href={whatsappHref} class="btn-secondary" target="_blank" rel="noopener">{t('page.cta.whatsapp')}</a>
+      </div>
+    </div>
+  </div>
+</section>

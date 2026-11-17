@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import PageCta from './PageCta.astro';
+import { useTranslations, type Lang } from '../../i18n/utils';
+import { services, servicePath, type Service } from '../../data/services';
+import { works, workPath } from '../../data/works';
+
+interface Props {
+  service: Service;
+  lang: Lang;
+}
+
+const { service, lang } = Astro.props;
+const t = useTranslations(lang);
+const c = service.content[lang];
+const home = lang === 'it' ? '/' : '/en/';
+const site = 'https://zenith-studio.it';
+const alternates = { it: servicePath('it', service), en: servicePath('en', service) };
+const others = services.filter((s) => s.id !== service.id);
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: c.h1,
+    description: c.metaDescription,
+    url: site + alternates[lang],
+    provider: { '@id': `${site}/#business` },
+    areaServed: [
+      { '@type': 'City', name: 'Forlì' },
+      { '@type': 'AdministrativeArea', name: 'Emilia-Romagna' },
+      { '@type': 'Country', name: 'Italia' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('crumb.home'), item: site + home },
+      { '@type': 'ListItem', position: 2, name: c.nav, item: site + alternates[lang] },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: lang,
+    mainEntity: c.faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={c.metaTitle} description={c.metaDescription} alternates={alternates} schema={schema}>
+  <Navbar altHref={alternates[lang === 'it' ? 'en' : 'it']} />
+  <main class="pt-16">
+    <section class="pt-16 pb-20 md:pt-24 md:pb-28">
+      <div class="mx-auto max-w-content px-6">
+        <Breadcrumbs items={[{ label: t('crumb.home'), href: home }, { label: c.nav }]} />
+        <p class="eyebrow mt-10">{c.eyebrow}</p>
+        <h1 class="mt-4 text-4xl md:text-6xl font-display font-semibold tracking-tight max-w-[18ch] leading-[1.02]">
+          {c.h1}
+        </h1>
+        <p class="mt-6 text-fg-body text-lg md:text-xl max-w-[60ch] leading-relaxed">{c.intro}</p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href={`${home}#contatti`} class="btn-primary">
+            {t('page.cta.primary')} <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 border-t border-line">
+      <div class="mx-auto max-w-content px-6 grid gap-12 lg:grid-cols-2">
+        <div data-reveal>
+          <h2 class="text-2xl md:text-3xl font-display font-semibold tracking-tight">{c.forWhoTitle}</h2>
+          <ul class="mt-8 flex flex-col gap-4">
+            {c.forWho.map((item) => (
+              <li class="flex gap-3 text-fg-body">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500" aria-hidden="true"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="hairline rounded-card p-8 bg-ink-900" data-reveal>
+          <h2 class="text-2xl md:text-3xl font-display font-semibold tracking-tight">{c.includedTitle}</h2>
+          <ul class="mt-8 flex flex-col gap-4">
+            {c.included.map((item) => (
+              <li class="flex gap-3 text-fg-body">
+                <span class="text-success shrink-0" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 border-t border-line">
+      <div class="mx-auto max-w-content px-6">
+        <h2 class="text-2xl md:text-3xl font-display font-semibold tracking-tight mb-12" data-reveal>{c.howTitle}</h2>
+        <ol class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {c.how.map((step, i) => (
+            <li data-reveal style={`transition-delay:${i * 80}ms`}>
+              <p class="font-mono text-xs text-accent-500">{`0${i + 1}`}</p>
+              <h3 class="mt-2 font-display font-medium text-lg">{step.title}</h3>
+              <p class="mt-2 text-sm text-fg-body">{step.desc}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="py-20 border-t border-line">
+      <div class="mx-auto max-w-content px-6">
+        <h2 class="text-2xl md:text-3xl font-display font-semibold tracking-tight mb-10" data-reveal>{t('service.works.title')}</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {works.map((w) => (
+            <a href={workPath(lang, w)} class="group block" data-reveal>
+              <div class="hairline rounded-2xl overflow-hidden bg-ink-800 group-hover:border-accent-500/40 transition-colors">
+                <img src={w.img} alt={`${w.name} — ${w.content[lang].type}`} class="w-full h-auto block" loading="lazy" />
+              </div>
+              <p class="mt-3 text-fg font-medium">{w.name}</p>
+              <p class="text-sm text-fg-subtle">{w.content[lang].sector}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 border-t border-line">
+      <div class="mx-auto max-w-content px-6">
+        <h2 class="text-2xl md:text-3xl font-display font-semibold tracking-tight mb-10" data-reveal>{t('service.faq.title')}</h2>
+        <dl class="max-w-[820px] border-t border-line">
+          {c.faq.map((f) => (
+            <div class="py-6 border-b border-line" data-reveal>
+              <dt class="font-display font-medium text-lg">{f.q}</dt>
+              <dd class="mt-2 text-fg-body leading-relaxed">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <p class="eyebrow mt-16 mb-4">{t('service.other')}</p>
+        <div class="flex flex-wrap gap-3">
+          {others.map((s) => (
+            <a href={servicePath(lang, s)} class="btn-secondary">{s.content[lang].nav} <span class="ml-2" aria-hidden="true">→</span></a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <PageCta />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,5 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { services, servicePath } from '../data/services';
+import { works, workPath } from '../data/works';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -7,14 +9,32 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-line/60 py-12">
-  <div class="mx-auto max-w-content px-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+  <div class="mx-auto max-w-content px-6 grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
     <div>
       <p class="font-display font-semibold text-lg">ZENITH<span class="text-accent-500">.</span></p>
       <p class="mt-1 text-sm text-fg-subtle">{t('footer.tagline')}</p>
       <p class="mt-1 text-sm text-fg-subtle">{t('footer.location')}</p>
     </div>
 
-    <div class="flex flex-wrap items-center gap-6 text-sm text-fg-muted">
+    <nav aria-label={t('footer.services')}>
+      <p class="eyebrow mb-4">{t('footer.services')}</p>
+      <ul class="flex flex-col gap-2 text-sm text-fg-muted">
+        {services.map((s) => (
+          <li><a href={servicePath(lang, s)} class="hover:text-fg transition-colors">{s.content[lang].nav}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-label={t('footer.works')}>
+      <p class="eyebrow mb-4">{t('footer.works')}</p>
+      <ul class="flex flex-col gap-2 text-sm text-fg-muted">
+        {works.map((w) => (
+          <li><a href={workPath(lang, w)} class="hover:text-fg transition-colors">{w.name}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex flex-col gap-2 text-sm text-fg-muted">
       <a href="tel:+393793820699" class="hover:text-fg transition-colors">+39 379 382 0699</a>
       <a href="mailto:marco@zenith-studio.it" class="hover:text-fg transition-colors">marco@zenith-studio.it</a>
       <a href="https://www.linkedin.com/company/zenith-studio" class="hover:text-fg transition-colors" rel="noopener">
@@ -26,7 +46,7 @@ const year = new Date().getFullYear();
     </div>
   </div>
 
-  <div class="mx-auto max-w-content px-6 mt-8 pt-6 border-t border-line/40 text-xs text-fg-subtle">
+  <div class="mx-auto max-w-content px-6 mt-10 pt-6 border-t border-line/40 text-xs text-fg-subtle">
     © {year} Zenith Studio. {t('footer.rights')}
   </div>
 </footer>

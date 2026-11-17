@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../Navbar.astro';
+import Footer from '../Footer.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import PageCta from './PageCta.astro';
+import { useTranslations, type Lang } from '../../i18n/utils';
+import { services, servicePath } from '../../data/services';
+import { works, workPath, type Work } from '../../data/works';
+
+interface Props {
+  work: Work;
+  lang: Lang;
+}
+
+const { work, lang } = Astro.props;
+const t = useTranslations(lang);
+const c = work.content[lang];
+const home = lang === 'it' ? '/' : '/en/';
+const site = 'https://zenith-studio.it';
+const alternates = { it: workPath('it', work), en: workPath('en', work) };
+const related = services.filter((s) => work.services.includes(s.id));
+const others = works.filter((w) => w.slug !== work.slug);
+
+const title =
+  lang === 'it'
+    ? `${work.name} — ${c.type} | Lavori Zenith Studio`
+    : `${work.name} — ${c.type} | Zenith Studio Work`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: `${work.name} — ${c.type}`,
+    description: c.summary,
+    url: site + alternates[lang],
+    image: site + work.img,
+    creator: { '@id': `${site}/#business` },
+    about: { '@type': 'Organization', name: work.name, url: work.url },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('crumb.home'), item: site + home },
+      { '@type': 'ListItem', position: 2, name: t('footer.works'), item: `${site}${home}#lavori` },
+      { '@type': 'ListItem', position: 3, name: work.name, item: site + alternates[lang] },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={c.summary} alternates={alternates} schema={schema}>
+  <Navbar altHref={alternates[lang === 'it' ? 'en' : 'it']} />
+  <main class="pt-16">
+    <section class="pt-16 pb-16 md:pt-24">
+      <div class="mx-auto max-w-content px-6">
+        <Breadcrumbs
+          items={[
+            { label: t('crumb.home'), href: home },
+            { label: t('footer.works'), href: `${home}#lavori` },
+            { label: work.name },
+          ]}
+        />
+        <p class="eyebrow mt-10">{c.type}</p>
+        <h1 class="mt-4 text-4xl md:text-6xl font-display font-semibold tracking-tight leading-[1.02]">{work.name}</h1>
+        <p class="mt-6 text-fg-body text-lg md:text-xl max-w-[60ch] leading-relaxed">{c.summary}</p>
+
+        <dl class="mt-10 grid gap-6 sm:grid-cols-3 max-w-3xl">
+          <div>
+            <dt class="eyebrow">{t('work.sector')}</dt>
+            <dd class="mt-2 text-fg">{c.sector}</dd>
+          </div>
+          <div>
+            <dt class="eyebrow">{t('work.type')}</dt>
+            <dd class="mt-2 text-fg">{c.type}</dd>
+          </div>
+          <div>
+            <dt class="eyebrow">{t('work.services')}</dt>
+            <dd class="mt-2 flex flex-wrap gap-x-3">
+              {related.map((s) => (
+                <a href={servicePath(lang, s)} class="text-fg underline decoration-line underline-offset-4 hover:decoration-accent-500">{s.content[lang].nav}</a>
+              ))}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="pb-20">
+      <div class="mx-auto max-w-content px-6">
+        <a class="block hairline rounded-card overflow-hidden bg-ink-800 hover:border-accent-500/40 transition-colors" href={work.url} target="_blank" rel="noopener">
+          <div class="flex items-center gap-1.5 px-3 py-2.5 border-b border-line">
+            <span class="h-2 w-2 rounded-full bg-white/15"></span>
+            <span class="h-2 w-2 rounded-full bg-white/15"></span>
+            <span class="h-2 w-2 rounded-full bg-white/15"></span>
+            <span class="ml-2 font-mono text-[11px] text-fg-subtle">{work.host}</span>
+          </div>
+          <img src={work.img} alt={`${work.name} — ${c.type}`} class="w-full h-auto block" />
+        </a>
+      </div>
+    </section>
+
+    <section class="py-20 border-t border-line">
+      <div class="mx-auto max-w-content px-6 grid gap-10 lg:grid-cols-2 items-start">
+        <div data-reveal>
+          <h2 class="text-2xl md:text-3xl font-display font-semibold tracking-tight">{t('work.built')}</h2>
+          <ul class="mt-8 flex flex-col gap-4">
+            {c.built.map((item) => (
+              <li class="flex gap-3 text-fg-body">
+                <span class="text-success shrink-0" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href={work.url} target="_blank" rel="noopener" class="btn-secondary mt-10">
+            {t('work.visit')} <span class="ml-2" aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+        <div data-reveal>
+          <p class="eyebrow mb-6">{t('work.more')}</p>
+          <ul class="border-t border-line">
+            {others.map((w) => (
+              <li class="border-b border-line">
+                <a href={workPath(lang, w)} class="flex items-center justify-between gap-4 py-5 group min-h-[44px]">
+                  <span>
+                    <span class="block text-fg font-medium">{w.name}</span>
+                    <span class="block text-sm text-fg-subtle">{w.content[lang].sector}</span>
+                  </span>
+                  <span class="text-fg-muted group-hover:text-accent-500 transition-colors" aria-hidden="true">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <PageCta />
+  </main>
+  <Footer />
+</BaseLayout>

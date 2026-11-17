@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { workBase } from '../data/works';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -7,28 +8,28 @@ const t = useTranslations(lang);
 const items = [
   {
     img: '/work/bblavilla.webp',
-    href: 'https://www.bblavilla.com',
+    href: `${workBase[lang]}bb-la-villa/`,
     url: 'bblavilla.com',
     label: t('lavori.item1.label'),
     caption: t('lavori.item1.caption'),
   },
   {
     img: '/work/relabcenter.webp',
-    href: 'https://relab-center.it',
+    href: `${workBase[lang]}relab-center/`,
     url: 'relab-center.it',
     label: t('lavori.item4.label'),
     caption: t('lavori.item4.caption'),
   },
   {
     img: '/work/crinalirunning.webp',
-    href: 'https://www.crinalirunning.it',
+    href: `${workBase[lang]}crinali-running-club/`,
     url: 'crinalirunning.it',
     label: t('lavori.item2.label'),
     caption: t('lavori.item2.caption'),
   },
   {
     img: '/work/asfaltimirko.webp',
-    href: 'https://asfaltimirko.it',
+    href: `${workBase[lang]}asfalti-mirko/`,
     url: 'asfaltimirko.it',
     label: t('lavori.item3.label'),
     caption: t('lavori.item3.caption'),
@@ -48,7 +49,7 @@ const items = [
 
     <div class="grid lg:grid-cols-12 gap-6">
       <div class="lg:col-span-7" data-reveal>
-        <a class="browser-frame block" href={items[0].href} target="_blank" rel="noopener">
+        <a class="browser-frame block" href={items[0].href}>
           <div class="browser-chrome">
             <span></span><span></span><span></span>
             <span class="browser-url">{items[0].url}</span>
@@ -56,7 +57,7 @@ const items = [
           <img src={items[0].img} alt={items[0].label} class="w-full h-auto block" loading="lazy" />
         </a>
         <div class="mt-4">
-          <p class="text-fg font-medium">{items[0].label}</p>
+          <a href={items[0].href} class="text-fg font-medium hover:text-accent-400 transition-colors">{items[0].label} <span class="text-fg-subtle" aria-hidden="true">→</span></a>
           <p class="text-sm text-fg-subtle">{items[0].caption}</p>
         </div>
       </div>
@@ -64,7 +65,7 @@ const items = [
       <div class="lg:col-span-5 flex flex-col gap-6">
         {items.slice(1).map((item, i) => (
           <div data-reveal style={`transition-delay:${i * 80}ms`}>
-            <a class="browser-frame block" href={item.href} target="_blank" rel="noopener">
+            <a class="browser-frame block" href={item.href}>
               <div class="browser-chrome">
                 <span></span><span></span><span></span>
                 <span class="browser-url">{item.url}</span>
@@ -72,7 +73,7 @@ const items = [
               <img src={item.img} alt={item.label} class="w-full h-auto block" loading="lazy" />
             </a>
             <div class="mt-4">
-              <p class="text-fg font-medium">{item.label}</p>
+              <a href={item.href} class="text-fg font-medium hover:text-accent-400 transition-colors">{item.label} <span class="text-fg-subtle" aria-hidden="true">→</span></a>
               <p class="text-sm text-fg-subtle">{item.caption}</p>
             </div>
           </div>
